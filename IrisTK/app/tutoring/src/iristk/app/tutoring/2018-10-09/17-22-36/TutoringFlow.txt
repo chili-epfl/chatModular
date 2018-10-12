@@ -1,0 +1,5 @@
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","grammar":"default-0","rectime":0.017,"length":0.9840002,"action":"TutoringFlow.4627642.26","event_name":"sense.user.speak","conf":0.56170714,"sem":{"number":15},"text":"fifteen","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","rectime":0.001,"length":0.5289998,"action":"TutoringFlow.4627642.48","event_name":"sense.user.speak","conf":1,"text":"NO_MATCH","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}

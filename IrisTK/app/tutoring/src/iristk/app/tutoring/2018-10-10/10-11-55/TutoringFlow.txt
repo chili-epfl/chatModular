@@ -1,0 +1,5 @@
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","rectime":0.005,"length":1.2229999,"action":"TutoringFlow.4628651.26","event_name":"sense.user.speak","conf":1,"text":"NO_MATCH","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","grammar":"default-0","rectime":0.024,"length":5.3329997,"action":"TutoringFlow.4628651.50","event_name":"sense.user.speak","conf":0.15971658,"sem":{"dontknow":1},"text":"I can't do it alone","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}

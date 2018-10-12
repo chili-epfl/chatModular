@@ -1,0 +1,522 @@
+<html><head><script>function toggle(id) { var e = document.getElementById(id); if(e.style.display == 'none') e.style.display = 'block'; else e.style.display = 'none';}</script></head><style>table {font-family:Helvetica;font-size:9pt}</style><body><table cellspacing="0" cellpadding="2">
+<tr><td valign=top>08:01:43</td>
+<td valign=top style="background:#E5BBE6"><b>Start</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 10">CALL</td>
+<td valign=top><a href="javascript:toggle('table-0')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-0" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Could you compute how much is 5 + 5?</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:43</td>
+<td valign=top style="background:#E5BBE6">Start</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-1')">action.speech</span><table id="table-1" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Could you compute how much is 5 + 5?</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:46</td>
+<td valign=top style="background:#E5BBE6">Start</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-2')">monitor.speech.done</span><table id="table-2" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E5BBE6">Start</span></td>
+</tr>
+<tr><td valign=top>08:01:46</td>
+<td valign=top style="background:#E5BBE6"><b>Start</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 10">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:01:46</td>
+<td valign=top style="background:#E5BBE6"><b>Start</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 15">GOTO</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr height=10><td></td></tr>
+<tr><td valign=top>08:01:46</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:01:46</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-3')">action.listen</span><table id="table-3" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:48</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-4')">sense.speech.rec</span><table id="table-4" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.011</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.702</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.26</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:01:48</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:01:48</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-5')">sense.user.speak</span><table id="table-5" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.011</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.702</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.26</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:48</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-6')">sense.user.speak</span><table id="table-6" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.011</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.702</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.26</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 87">CALL</td>
+<td valign=top><a href="javascript:toggle('table-7')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-7" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I am sorry, I didn't get that.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:48</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-8')">action.speech</span><table id="table-8" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I am sorry, I didn't get that.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:51</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-9')">monitor.speech.done</span><table id="table-9" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:01:51</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 87">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:01:51</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:01:51</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-10')">action.listen</span><table id="table-10" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:52</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-11')">sense.speech.rec</span><table id="table-11" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.002</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.45099998</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.47</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:01:52</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:01:52</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-12')">sense.user.speak</span><table id="table-12" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.002</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.45099998</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.47</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:52</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-13')">sense.user.speak</span><table id="table-13" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.002</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.45099998</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.47</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 87">CALL</td>
+<td valign=top><a href="javascript:toggle('table-14')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-14" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I am sorry, I didn't get that.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:52</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-15')">action.speech</span><table id="table-15" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I am sorry, I didn't get that.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:55</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-16')">monitor.speech.done</span><table id="table-16" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:01:55</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 87">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:01:55</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:01:55</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-17')">action.listen</span><table id="table-17" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:57</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-18')">sense.speech.rec</span><table id="table-18" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.678</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.52199996</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.68</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.23431048</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=10}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>ten</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:01:57</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:01:57</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-19')">sense.user.speak</span><table id="table-19" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.678</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.52199996</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.68</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.23431048</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=10}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>ten</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:57</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-20')">sense.user.speak</span><table id="table-20" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.678</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.52199996</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.68</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.23431048</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=10}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>ten</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 26">CALL</td>
+<td valign=top><a href="javascript:toggle('table-21')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-21" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>That was correct, you find it on the first try.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:01:57</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-22')">action.speech</span><table id="table-22" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>That was correct, you find it on the first try.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:00</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-23')">monitor.speech.done</span><table id="table-23" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:00</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 26">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:00</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 33">GOTO</td>
+<td valign=top><span style="padding:2px;background:#E6BDE2">CheckAgain</span></td>
+</tr>
+<tr height=10><td></td></tr>
+<tr><td valign=top>08:02:00</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 55">CALL</td>
+<td valign=top><a href="javascript:toggle('table-24')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-24" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Do you want to try again?</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:00</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-25')">action.speech</span><table id="table-25" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Do you want to try again?</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:02</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-26')">monitor.speech.done</span><table id="table-26" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BDE2">CheckAgain</span></td>
+</tr>
+<tr><td valign=top>08:02:02</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 55">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:02</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 55">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:02:02</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-27')">action.listen</span><table id="table-27" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:04</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-28')">sense.speech.rec</span><table id="table-28" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.047</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.93999994</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.99</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.1492888</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{yes=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>yes please</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BDE2">CheckAgain</span></td>
+</tr>
+<tr><td valign=top>08:02:04</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:02:04</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 55">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-29')">sense.user.speak</span><table id="table-29" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.047</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.93999994</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.99</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.1492888</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{yes=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>yes please</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:04</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-30')">sense.user.speak</span><table id="table-30" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.047</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.93999994</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.99</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.1492888</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{yes=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>yes please</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 60">CALL</td>
+<td valign=top><a href="javascript:toggle('table-31')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-31" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Okay, let's try again.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:04</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-32')">action.speech</span><table id="table-32" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Okay, let's try again.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:06</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-33')">monitor.speech.done</span><table id="table-33" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BDE2">CheckAgain</span></td>
+</tr>
+<tr><td valign=top>08:02:06</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 60">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:06</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 63">GOTO</td>
+<td valign=top><span style="padding:2px;background:#E5BBE6">Start</span></td>
+</tr>
+<tr height=10><td></td></tr>
+<tr><td valign=top>08:02:06</td>
+<td valign=top style="background:#E5BBE6"><b>Start</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 10">CALL</td>
+<td valign=top><a href="javascript:toggle('table-34')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-34" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Could you compute how much is 5 + 5?</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:06</td>
+<td valign=top style="background:#E5BBE6">Start</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-35')">action.speech</span><table id="table-35" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Could you compute how much is 5 + 5?</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:09</td>
+<td valign=top style="background:#E5BBE6">Start</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-36')">monitor.speech.done</span><table id="table-36" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E5BBE6">Start</span></td>
+</tr>
+<tr><td valign=top>08:02:09</td>
+<td valign=top style="background:#E5BBE6"><b>Start</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 10">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:09</td>
+<td valign=top style="background:#E5BBE6"><b>Start</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 15">GOTO</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr height=10><td></td></tr>
+<tr><td valign=top>08:02:09</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:02:09</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-37')">action.listen</span><table id="table-37" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:11</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-38')">sense.speech.rec</span><table id="table-38" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.007</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.76899993</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.131</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.13399649</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=11}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>eleven</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:11</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:02:11</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-39')">sense.user.speak</span><table id="table-39" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.007</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.76899993</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.131</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.13399649</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=11}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>eleven</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:11</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-40')">sense.user.speak</span><table id="table-40" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.007</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.76899993</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.131</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.13399649</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=11}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>eleven</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 25">CALL</td>
+<td valign=top><a href="javascript:toggle('table-41')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-41" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>You're almost correct! Let's try one more time.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:11</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-42')">action.speech</span><table id="table-42" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>You're almost correct! Let's try one more time.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:14</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-43')">monitor.speech.done</span><table id="table-43" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:14</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 25">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:15</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:02:15</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-44')">action.listen</span><table id="table-44" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:19</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-45')">sense.speech.rec</span><table id="table-45" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.002</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.747</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.152</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:19</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:02:19</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-46')">sense.user.speak</span><table id="table-46" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.002</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.747</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.152</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:19</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-47')">sense.user.speak</span><table id="table-47" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.002</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.747</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.152</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 87">CALL</td>
+<td valign=top><a href="javascript:toggle('table-48')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-48" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I am sorry, I didn't get that.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:19</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-49')">action.speech</span><table id="table-49" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I am sorry, I didn't get that.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:21</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-50')">monitor.speech.done</span><table id="table-50" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:21</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 87">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:21</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:02:21</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-51')">action.listen</span><table id="table-51" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:23</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-52')">sense.speech.rec</span><table id="table-52" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.011</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.927</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.174</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.6170845</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=17}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>seventeen</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:23</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:02:23</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-53')">sense.user.speak</span><table id="table-53" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.011</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.927</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.174</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.6170845</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=17}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>seventeen</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:23</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-54')">sense.user.speak</span><table id="table-54" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.011</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.927</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.174</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.6170845</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=17}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>seventeen</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 39">CALL</td>
+<td valign=top><a href="javascript:toggle('table-55')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-55" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>That was too high, think again.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:23</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-56')">action.speech</span><table id="table-56" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>That was too high, think again.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:25</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-57')">monitor.speech.done</span><table id="table-57" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:25</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 39">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:26</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:02:26</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-58')">action.listen</span><table id="table-58" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:28</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-59')">sense.speech.rec</span><table id="table-59" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.012</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.896</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.195</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.40882325</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{dontknow=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I don't know</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:28</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:02:28</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-60')">sense.user.speak</span><table id="table-60" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.012</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.896</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.195</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.40882325</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{dontknow=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I don't know</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:28</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-61')">sense.user.speak</span><table id="table-61" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.012</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.896</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.195</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.40882325</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{dontknow=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I don't know</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 80">CALL</td>
+<td valign=top><a href="javascript:toggle('table-62')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-62" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>You could try counting on your fingers.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:28</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-63')">action.speech</span><table id="table-63" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>You could try counting on your fingers.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:30</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-64')">monitor.speech.done</span><table id="table-64" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:30</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 80">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:30</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:02:30</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-65')">action.listen</span><table id="table-65" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:32</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-66')">sense.speech.rec</span><table id="table-66" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.001</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.385</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.216</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:32</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:02:32</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-67')">sense.user.speak</span><table id="table-67" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.001</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.385</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.216</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:32</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-68')">sense.user.speak</span><table id="table-68" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.001</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.385</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.216</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>1.0</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>NO_MATCH</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 87">CALL</td>
+<td valign=top><a href="javascript:toggle('table-69')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-69" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I am sorry, I didn't get that.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:32</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-70')">action.speech</span><table id="table-70" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I am sorry, I didn't get that.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:34</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-71')">monitor.speech.done</span><table id="table-71" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:34</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 87">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:34</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:02:34</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-72')">action.listen</span><table id="table-72" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:38</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-73')">sense.speech.rec</span><table id="table-73" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.011</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.339</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.237</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.51669747</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>one</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:38</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:02:38</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-74')">sense.user.speak</span><table id="table-74" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.011</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.339</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.237</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.51669747</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>one</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:38</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-75')">sense.user.speak</span><table id="table-75" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.011</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.339</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.237</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.51669747</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>one</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 45">CALL</td>
+<td valign=top><a href="javascript:toggle('table-76')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-76" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I'm sure you can find it, let's try again.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:38</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-77')">action.speech</span><table id="table-77" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>I'm sure you can find it, let's try again.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:41</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-78')">monitor.speech.done</span><table id="table-78" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:41</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 45">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:41</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:02:41</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-79')">action.listen</span><table id="table-79" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:43</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-80')">sense.speech.rec</span><table id="table-80" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.01</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.538</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.258</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.059026666</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=10}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>ten</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:43</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:02:43</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 20">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-81')">sense.user.speak</span><table id="table-81" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.01</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.538</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.258</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.059026666</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=10}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>ten</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:43</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-82')">sense.user.speak</span><table id="table-82" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.01</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.538</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.258</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.059026666</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{number=10}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>ten</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 26">CALL</td>
+<td valign=top><a href="javascript:toggle('table-83')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-83" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Great! You've found it this time.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:43</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-84')">action.speech</span><table id="table-84" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Great! You've found it this time.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:46</td>
+<td valign=top style="background:#E6BEDA">Guess</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-85')">monitor.speech.done</span><table id="table-85" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BEDA">Guess</span></td>
+</tr>
+<tr><td valign=top>08:02:46</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 26">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:46</td>
+<td valign=top style="background:#E6BEDA"><b>Guess</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 33">GOTO</td>
+<td valign=top><span style="padding:2px;background:#E6BDE2">CheckAgain</span></td>
+</tr>
+<tr height=10><td></td></tr>
+<tr><td valign=top>08:02:46</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 55">CALL</td>
+<td valign=top><a href="javascript:toggle('table-86')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-86" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Do you want to try again?</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:46</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-87')">action.speech</span><table id="table-87" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Do you want to try again?</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:48</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-88')">monitor.speech.done</span><table id="table-88" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BDE2">CheckAgain</span></td>
+</tr>
+<tr><td valign=top>08:02:48</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 55">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>
+<tr><td valign=top>08:02:48</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 55">CALL</td>
+<td valign=top><span style="padding:2px;background:#AADDE6">listen</span></td>
+</tr>
+<tr><td valign=top>08:02:48</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 39">SEND</td>
+<td valign=top><a href="javascript:toggle('table-89')">action.listen</span><table id="table-89" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">endSilTimeout</td><td>500</td></tr><tr><td style="font-weight:bold;margin-right:5px">noSpeechTimeout</td><td>8000</td></tr><tr><td style="font-weight:bold;margin-right:5px">nbest</td><td>1</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:49</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-90')">sense.speech.rec</span><table id="table-90" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.009</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.41399997</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.289</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.37789324</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{no=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>no</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 42">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BDE2">CheckAgain</span></td>
+</tr>
+<tr><td valign=top>08:02:49</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#AADDE6;border-left:1px solid black"><b>listen</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.exit</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 51">SEND</td>
+<td valign=top>action.listen.stop</td>
+</tr>
+<tr><td valign=top>08:02:49</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 55">RAISE</td>
+<td valign=top><a href="javascript:toggle('table-91')">sense.user.speak</span><table id="table-91" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.009</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.41399997</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.289</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.37789324</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{no=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>no</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:49</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-92')">sense.user.speak</span><table id="table-92" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">grammar</td><td>default-0</td></tr><tr><td style="font-weight:bold;margin-right:5px">rectime</td><td>0.009</td></tr><tr><td style="font-weight:bold;margin-right:5px">length</td><td>0.41399997</td></tr><tr><td style="font-weight:bold;margin-right:5px">action</td><td>TutoringFlow.4621321.289</td></tr><tr><td style="font-weight:bold;margin-right:5px">conf</td><td>0.37789324</td></tr><tr><td style="font-weight:bold;margin-right:5px">sem</td><td>Record{no=1}</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>no</td></tr><tr><td style="font-weight:bold;margin-right:5px">type</td><td>final</td></tr></table></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 65">CALL</td>
+<td valign=top><a href="javascript:toggle('table-93')"><span style="padding:2px;background:#C0E6DD">say</span></span><table id="table-93" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Okay, I was glad to help you.</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:49</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top>state.enter</td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 22">SEND</td>
+<td valign=top><a href="javascript:toggle('table-94')">action.speech</span><table id="table-94" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">async</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">abort</td><td>false</td></tr><tr><td style="font-weight:bold;margin-right:5px">text</td><td>Okay, I was glad to help you.</td></tr><tr><td style="font-weight:bold;margin-right:5px">ifsilent</td><td>false</td></tr></table></td>
+</tr>
+<tr><td valign=top>08:02:52</td>
+<td valign=top style="background:#E6BDE2">CheckAgain</td><td valign=top style="background:#C0E6DD;border-left:1px solid black"><b>say</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top><a href="javascript:toggle('table-95')">monitor.speech.done</span><table id="table-95" style="display:none"><tr><td style="font-weight:bold;margin-right:5px">agent</td><td>system</td></tr></table></td><td valign=top><a href="C:\Dropbox\iristk\core\src\iristk\flow\DialogFlow.xml" title="Line: 28">RETURN</td>
+<td valign=top><span style="padding:2px;background:#E6BDE2">CheckAgain</span></td>
+</tr>
+<tr><td valign=top>08:02:52</td>
+<td valign=top style="background:#E6BDE2"><b>CheckAgain</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td valign=top></td><td valign=top><a href="C:\Users\Meret\IrisTK\app\tutoring\src\iristk\app\tutoring\TutoringFlow.xml" title="Line: 65">RAISE</td>
+<td valign=top>monitor.speech.done</td>
+</tr>

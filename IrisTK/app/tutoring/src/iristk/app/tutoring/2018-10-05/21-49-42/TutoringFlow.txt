@@ -1,0 +1,21 @@
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","grammar":"default-0","rectime":0.612,"length":0.6580001,"action":"TutoringFlow.4622149.26","event_name":"sense.user.speak","conf":0.14610635,"sem":{"dontknow":1},"text":"I don't know","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","rectime":0.001,"length":2.8569999,"action":"TutoringFlow.4622149.47","event_name":"sense.user.speak","conf":1,"text":"NO_MATCH","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","grammar":"default-0","rectime":0.013,"length":1.4200001,"action":"TutoringFlow.4622149.68","event_name":"sense.user.speak","conf":0.4696471,"sem":{"number":10},"text":"ten","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","grammar":"default-0","rectime":0.012,"length":0.81700003,"action":"TutoringFlow.4622149.99","event_name":"sense.user.speak","conf":0.5748378,"sem":{"yes":1},"text":"yes","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","grammar":"default-0","rectime":0.013,"length":0.798,"action":"TutoringFlow.4622149.131","event_name":"sense.user.speak","conf":0.29884216,"sem":{"number":7},"text":"seven","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","rectime":0,"length":1.3249998,"action":"TutoringFlow.4622149.152","event_name":"sense.user.speak","conf":1,"text":"NO_MATCH","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","grammar":"default-0","rectime":0.012,"length":1.3470001,"action":"TutoringFlow.4622149.173","event_name":"sense.user.speak","conf":0.3945479,"sem":{"number":11},"text":"eleven","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","grammar":"default-0","rectime":0.015,"length":0.61800003,"action":"TutoringFlow.4622149.194","event_name":"sense.user.speak","conf":0.49188837,"sem":{"number":10},"text":"ten","type":"final"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
+{"class":"iristk.system.Event","grammar":"default-0","rectime":0.012,"length":3.2580001,"action":"TutoringFlow.4622149.225","event_name":"sense.user.speak","conf":0.053049937,"sem":{"dontknow":1},"text":"I don't know","type":"final"}

@@ -1,0 +1,1 @@
+{"class":"iristk.system.Event","event_name":"monitor.speech.done"}

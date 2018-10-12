@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xml:lang="en-US" version="1.0"
+    xmlns="http://www.w3.org/2001/06/grammar" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.w3.org/2001/06/grammar http://www.iristk.net/xml/srgs.xsd"
+    tag-format="semantics/1.0">
+
+    <rule id="main" scope="public">
+        <tag>out.order={};out.order.main={}</tag>
+        <item repeat="0-1">
+            <ruleref uri="#count" />
+            <tag>out.order.main.count = rules.count</tag>
+        </item>
+        <item repeat="0-1">
+            <ruleref uri="#size" />
+            <tag>out.order.main.size = rules.size</tag>
+        </item>
+        <one-of>
+            <item>
+                <one-of>
+                    <item>burger_</item>
+                    <item>hamburger_</item>
+                </one-of>
+                <tag>out.order.main.type="hamburger"</tag>
+            </item>
+            <item>
+                <one-of>
+                    <item>cheeseburger_</item>
+                </one-of>
+                <tag>out.order.main.type="hamburger"; out.order.main.topping="cheese"</tag>
+            </item>
+        </one-of>
+    </rule>
+    
+
+    <rule id="drink" scope="public">
+        <tag>out.order={};out.order.drink={}</tag>
+        <item repeat="0-1">
+            <ruleref uri="#count" />
+            <tag>out.order.drink.count = rules.count</tag>
+        </item>
+        <item repeat="0-1">
+            <ruleref uri="#size" />
+            <tag>out.order.drink.size = rules.size</tag>
+        </item>
+        <one-of>
+            <item>
+                <item repeat="0-1">
+                    <ruleref uri="#flavor"/>
+                    <tag>out.order.drink.flavor = rules.flavor</tag>
+                </item>
+                <item>milkshake</item>
+                <tag>out.order.drink.type="milkshake"</tag>
+            </item>
+            <item>coke<tag>out.order.drink.type="coke"</tag></item>
+            <item>sprite<tag>out.order.drink.type="sprite"</tag></item>
+            <item>fanta<tag>out.order.drink.type="fanta"</tag></item>
+        </one-of>
+    </rule>
+    
+
+    <rule id="side" scope="public">
+        <tag>out.order={};out.order.side={}</tag>
+        <item repeat="0-1">
+            <ruleref uri="#count" />
+            <tag>out.order.side.count = rules.count</tag>
+        </item>
+        <item repeat="0-1">
+            <ruleref uri="#size" />
+            <tag>out.order.side.size = rules.size</tag>
+        </item>
+        <one-of>
+            <item>
+                <one-of>
+                    <item>fries</item>
+                    <item>some fries</item>
+                    <item>bag of fries</item>
+                </one-of>
+                <tag>out.order.side.type="fries"</tag>
+            </item>
+            <item>salad<tag>out.order.side.type="salad"</tag></item>
+        </one-of>
+    </rule>
+    
+
+    <rule id="flavor_answer" scope="public">
+        <ruleref uri="#flavor"/>
+        <tag>out.flavor = rules.flavor</tag>
+    </rule>
+    
+
+    <rule id="flavor">
+        <one-of>
+            <item>strawberry</item>
+            <item>chocolate</item>
+            <item>banana</item>
+            <item>vanilla</item>
+        </one-of>
+    </rule>
+
+
+    <rule id="size">
+        <one-of>
+            <item>large</item>
+            <item>medium</item>
+            <item>small</item>
+        </one-of>           
+    </rule>
+    
+
+    <rule id="count">
+        <one-of>
+            <item>a<tag>out=1</tag></item>
+            <item>one<tag>out=1</tag></item>
+            <item>two<tag>out=2</tag></item>
+        </one-of>
+    </rule>
+    
+
+    <rule id="yes" scope="public">
+        <one-of>
+            <item>yes</item>
+            <item>yes I do</item>
+            <item>sure</item>
+            <item>yeah</item>
+            <item>of course</item>
+            <item>okay</item>
+        </one-of>
+        <tag>out.yes=1</tag>
+    </rule>
+
+
+    <rule id="no" scope="public">
+        <one-of>
+            <item>no</item>
+            <item>no way</item>
+            <item>nope</item>
+            <item>not really</item>
+            <item>I don't think so</item>
+        </one-of>
+        <tag>out.no=1</tag>
+    </rule>
+
+</grammar>

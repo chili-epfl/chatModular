@@ -1,0 +1,8 @@
+<package name="burger" version="0.1.0">
+	<run>
+		<command name="burger" class="iristk.app.burger.BurgerSystem"/>
+	</run>
+	<classpath>
+		<src path="src" output="bin"/>
+	</classpath>
+</package>
