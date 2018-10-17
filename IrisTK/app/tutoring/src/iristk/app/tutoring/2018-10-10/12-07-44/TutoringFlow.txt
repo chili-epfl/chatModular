@@ -1,4 +1,0 @@
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","grammar":"default-0","rectime":0.027,"length":3.631,"action":"TutoringFlow.4628767.26","event_name":"sense.user.speak","conf":0.08007529,"sem":{"dontknow":1},"text":"I don't know","type":"final"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","rectime":0.002,"length":2.6639998,"action":"TutoringFlow.4628767.52","event_name":"sense.user.speak","conf":1,"text":"NO_MATCH","type":"final"}

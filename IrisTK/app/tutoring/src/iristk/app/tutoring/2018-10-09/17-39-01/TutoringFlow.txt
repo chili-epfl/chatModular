@@ -1,4 +1,0 @@
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","grammar":"default-0","rectime":0.019,"length":0.8299999,"action":"TutoringFlow.4627658.26","event_name":"sense.user.speak","conf":0.74217904,"sem":{"number":10},"text":"ten","type":"final"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}

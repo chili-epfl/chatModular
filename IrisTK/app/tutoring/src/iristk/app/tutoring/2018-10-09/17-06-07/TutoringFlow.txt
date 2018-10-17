@@ -1,9 +1,0 @@
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","grammar":"default-0","rectime":0.03,"length":2.9310002,"action":"TutoringFlow.4627626.26","event_name":"sense.user.speak","conf":0.08885056,"sem":{"no":1},"text":"no","type":"final"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","length":0,"action":"TutoringFlow.4627626.48","event_name":"sense.user.silence","conf":1,"text":"","type":"silence"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","rectime":0.001,"length":1.7549999,"action":"TutoringFlow.4627626.65","event_name":"sense.user.speak","conf":1,"text":"NO_MATCH","type":"final"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","length":0,"action":"TutoringFlow.4627626.89","event_name":"sense.user.silence","conf":1,"text":"","type":"silence"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}

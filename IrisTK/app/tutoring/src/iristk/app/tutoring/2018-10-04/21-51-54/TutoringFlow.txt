@@ -1,5 +1,0 @@
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","length":0,"action":"TutoringFlow.4620711.26","event_name":"sense.user.silence","conf":1,"text":"","type":"silence"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","length":0,"action":"TutoringFlow.4620711.43","event_name":"sense.user.silence","conf":1,"text":"","type":"silence"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}

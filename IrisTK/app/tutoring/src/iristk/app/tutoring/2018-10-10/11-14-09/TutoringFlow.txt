@@ -1,9 +1,0 @@
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","rectime":0.005,"length":3.912,"action":"TutoringFlow.4628714.26","event_name":"sense.user.speak","conf":1,"text":"NO_MATCH","type":"final"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","length":0,"action":"TutoringFlow.4628714.51","event_name":"sense.user.silence","conf":1,"text":"","type":"silence"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","length":0,"action":"TutoringFlow.4628714.68","event_name":"sense.user.silence","conf":1,"text":"","type":"silence"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
-{"class":"iristk.system.Event","grammar":"default-0","rectime":0.034,"length":1.871,"action":"TutoringFlow.4628714.85","event_name":"sense.user.speak","conf":0.18092114,"sem":{"dontknow":1},"text":"I can't do it alone","type":"final"}
-{"class":"iristk.system.Event","event_name":"monitor.speech.done"}
