@@ -10,6 +10,7 @@
  ******************************************************************************/
 package iristk.speech;
 
+import iristk.app.tutoring.Grammar;
 import iristk.app.tutoring.Producer;
 import iristk.audio.AudioPort;
 import iristk.system.Event;
@@ -48,10 +49,10 @@ public class Console extends IrisModule {
 	private int lastPos = 0;
 	private boolean startOfSpeech;
 	private JTextField textInput;
+	private Grammar g = new Grammar();
 	//private boolean synthesizer = true;			
 	//private boolean recognizerBo = true;	
 	private JPanel window;
-	private static String answer = "";
 	
 	private Map<String,Color> colorMap = new HashMap<>();
 	private ArrayList<Color> colorList = new ArrayList<>();
@@ -104,19 +105,26 @@ public class Console extends IrisModule {
 						SimpleAttributeSet style = new SimpleAttributeSet();		
 						StyleConstants.setForeground(style, Color.GREEN);
 						textPane.setParagraphAttributes(style, true);
+						
 						//insert on console
-						doc.insertString(doc.getLength(), textInput.getText() + "\n", null);
-						answer = textInput.getText();
+						doc.insertString(doc.getLength(), textInput.getText() + "\n", null); 
+						
+						//Creating a new event
+						Event newEvent = new Event("sense.user.type");
+						newEvent.put("text", textInput.getText());
+						send(newEvent);
+						
+						//<onevent name="sense.user.speak" cond="event?:sem:number">
 						//<if cond="asInteger(event:sem:number) == number">
+						//<dialog:listen/>
 					} catch (BadLocationException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					textPane.setCaretPosition(doc.getLength());
 					
 					
 					textInput.setText("");
-					textInput.setEditable(false);
+					textInput.setEditable(true);
 				} else if (!startOfSpeech) {
 					startOfSpeech();
 				}
@@ -170,9 +178,19 @@ public class Console extends IrisModule {
 				public void run() {
 					try {
 						String text = getText(event);
+						
+						//Added: publish message
+						try {										
+							Producer.serverPublish(text);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
 						textPane.setParagraphAttributes(getStyle(event.getString("agent", "system")), true);
 						doc.insertString(doc.getLength(), text + "\n", null);
 						textPane.setCaretPosition(doc.getLength());
+						//textInput.setEditable(true);
 					} catch (BadLocationException e) {
 						e.printStackTrace();
 					}
@@ -185,7 +203,10 @@ public class Console extends IrisModule {
 				send(speech);									
 			}*/									
 			
+		} else if (event.getName().equals("action.waitForSpeech")){
+			textInput.setEditable(true);
 		} else if (event.getName().equals("sense.speech.rec")) {
+		
 			EventQueue.invokeLater(new Runnable() {
 				@Override
 				public void run() {
@@ -354,10 +375,7 @@ public class Console extends IrisModule {
 			return null;
 		}
 		
-		
-		
 	}
-	public static String getAnswer() {
-		return answer;
-	}
+	
+	
 }

@@ -3,41 +3,38 @@
 	initial="Start"	xmlns="iristk.flow" xmlns:p="iristk.flow.param" xmlns:dialog="iristk.flow.DialogFlow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="iristk.flow flow.xsd iristk.flow.DialogFlow DialogFlow.xsd">
 	
+	<import class="iristk.speech.Console"/>
 	<var name="number"  type="Integer"/>
 	<var name="guesses" type="Integer"/>
-	<var name="answer" type="String"/>
+	<var name="g" type="Grammar" value="new Grammar()"/>
 	
 	<state id="Start">
 		<onentry>
 			<exec>number = 10</exec>
 			<exec>guesses = 0</exec>
 			<dialog:say>Could you compute how much is 5 + 5?</dialog:say>
-			<exec>Producer.serverPublish("Could you compute how much is 5 + 5?")</exec>
 			<goto state="Guess"/>
 		</onentry>
 	</state>
 	
 	<state id="Guess" extends="Dialog">
 		<onentry>
-			<dialog:listen/>
+			<exec>send(new Event("action.waitForSpeech"))</exec>
 		</onentry>
-		<onevent name="sense.user.speak" cond="event?:sem:number">
+		
+		<onevent name="sense.user.type" cond="g.getGrammar((String)event:text) != null">
 			<exec>guesses++</exec>
-			<exec>answer = Console.getAnswer()</exec>
-			<if cond="asInteger(answer) == number">
+			<if cond="g.getGrammar((String)event:text) == number">
 				<if cond="guesses == 1">
-					<dialog:say>That was correct, you find it on the first try.</dialog:say>	
-					<exec>Producer.serverPublish("That was correct, you find it on the first try.")</exec>
+					<dialog:say>That was correct, you find it on the first try.</dialog:say>
 				<else/>
 					<dialog:say>Great! You've found it this time.</dialog:say>
-					<exec>Producer.serverPublish("Great! You've found it this time.")</exec>
 				</if>
 				<goto state="CheckAgain"/>
-			<elseif cond="asInteger(event:sem:number) == 9 or asInteger(event:sem:number) == 11"/>
+			<elseif cond="g.getGrammar((String)event:text) == (number - 1) or g.getGrammar((String)event:text) == (number + 1)"/>
 				<dialog:say>You're almost correct! Let's try one more time.</dialog:say>
-				<exec>Producer.serverPublish("You're almost correct! Let's try one more time.")</exec>
 				<reentry/>
-			<elseif cond="asInteger(event:sem:number) &gt; number"/>	
+			<elseif cond="g.getGrammar((String)event:text) &gt; number"/>	
 				<random>
 					<dialog:say>That was too high, think again.</dialog:say>
 					<dialog:say>That's still not quite it, let's think again.</dialog:say>
@@ -56,29 +53,20 @@
 	<state id="CheckAgain" extends="Dialog">
 		<onentry>
 			<dialog:say>Do you want to try again?</dialog:say>
-			<exec>Producer.serverPublish("Do you want to try again?")</exec>
 			<dialog:listen/>
 		</onentry>
-		<onevent name="sense.user.speak" cond="event?:sem:yes">
+		<onevent name="sense.user.type" cond="event:text.equals(yes)">
 			<dialog:say>Okay, let's try again.</dialog:say>
-			<exec>Producer.serverPublish("Okay, let's try again.")</exec>
 			<goto state="Start"/>
 		</onevent>
-		<onevent name="sense.user.speak" cond="event?:sem:no">
+		<onevent name="sense.user.type" cond="event:text.equals(no)">
 			<dialog:say>Okay, I was glad to help you.</dialog:say>
-			<exec>Producer.serverPublish("Okay, I was glad to help you.")</exec>
 			<exec>System.exit(0)</exec>
 		</onevent>		
 	</state>
 	
 	<state id="Dialog">
-		<onevent name="sense.user.silence">
-			<dialog:say>I am sorry, I didn't hear anything.</dialog:say>
-			<exec>Producer.serverPublish("I am sorry, I didn't hear anything.")</exec>
-			<reentry/>
-		</onevent>
-		
-		 <onevent name="sense.user.speak" cond="event?:sem:dontknow">
+		 <onevent name="sense.user.type" cond="event.getString(text).contains(help)">
 		 	<random>
             	<dialog:say>You could try counting on your fingers.</dialog:say>
             	<dialog:say>Try to see this problem as if you had to sum 5 apples and 5 bananas.</dialog:say>
@@ -86,9 +74,8 @@
             <reentry/>  
         </onevent>
 		
-		<onevent name="sense.user.speak">
+		<onevent name="sense.user.type">
 			<dialog:say>I am sorry, I didn't get that.</dialog:say>
-			<exec>Producer.serverPublish("I am sorry, I didn't get that.")</exec>
 			<reentry/>
 		</onevent>
 	</state>

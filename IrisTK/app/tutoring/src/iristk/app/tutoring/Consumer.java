@@ -18,14 +18,14 @@ public class Consumer {
 	public static void serverConsume() throws Exception {
 	    ConnectionFactory factory = new ConnectionFactory();
 	    //factory.setHost("localhost");
-	   //factory.setUri("amqp://meretm:o8!jk6f.@128.179.191.105:5672");
+	    //factory.setUri("amqp://meretm:o8!jk6f.@128.179.191.225:5672/test");		 //at epfl
+	    factory.setUri("amqp://meretm:o8!jk6f.@192.168.0.19:5672/test");		//at home
 	 
-	    factory.setUri("amqp://meretm:o8!jk6f.@128.179.186.104:5672/test");		//IP of this computer and its vhost
+	    //factory.setUri("amqp://meretm:o8!jk6f.@192.168.0.19:5672/test");		//IP of this computer and its vhost
 	    Connection connection = factory.newConnection();
 	    Channel channel = connection.createChannel();
 
 	    channel.queueDeclare("test-queue", true, false, false, null);
-	    //System.out.println("Waiting for messages.");
 
 	    DefaultConsumer consumer = new DefaultConsumer(channel) {
 	        @Override
@@ -42,14 +42,14 @@ public class Consumer {
 	public static void clientConsume() throws Exception {
 	    ConnectionFactory factory = new ConnectionFactory();
 	    //factory.setHost("localhost");
-	    factory.setUri("amqp://meretm:o8!jk6f.@128.179.186.104:5672");
+	    //factory.setUri("amqp://meretm:o8!jk6f.@128.179.191.225:5672/test");		//at epfl
+	    factory.setUri("amqp://meretm:o8!jk6f.@192.168.0.19:5672/test");		//at home
 	      
 	    //factory.setUri("amqp://meretm:o8!jk6f.@192.168.0.20:5672/test_bis"); 	//change IP and vhost vhost (other computer) => check why not other user and password	
 	    Connection connection = factory.newConnection();
 	    Channel channel = connection.createChannel();
 
 	    channel.queueDeclare("test-queue", true, false, false, null);
-	    System.out.println("Waiting for messages.");
 
 	    DefaultConsumer consumer = new DefaultConsumer(channel) {
 	        @Override

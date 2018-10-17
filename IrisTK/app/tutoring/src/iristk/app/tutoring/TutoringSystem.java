@@ -37,7 +37,7 @@ public class TutoringSystem {
 		system.setLanguage(Language.ENGLISH_US);
 		
 		// Uncomment this if you want to turn on logging
-		system.setupLogging(new File("c:/Users/Meret/IrisTK/app/tutoring/src/iristk/app/tutoring"), true);
+		//system.setupLogging(new File("c:/Users/Meret/IrisTK/app/tutoring/src/iristk/app/tutoring"), true);
 		
 		// Set up the GUI
 		system.setupGUI();
@@ -52,6 +52,8 @@ public class TutoringSystem {
 		
 		// Add the flow
 		system.addModule(new FlowModule(new TutoringFlow()));
+		//system.addModule(new NewModule());
+		//system.addModule(new HelloModule());
 		
 		// Load a grammar in the recognizer
 		system.loadContext("default", new SpeechGrammarContext(new SRGSGrammar(system.getPackageFile("TutoringGrammar.xml"))));
@@ -69,6 +71,7 @@ public class TutoringSystem {
 		Consumer.serverConsume();
 		
 		new TutoringSystem();
+		
 	}
 
 

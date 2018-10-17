@@ -1,22 +1,18 @@
 package iristk.app.tutoring;
 
-import java.util.List;
 import java.io.File;
 import iristk.xml.XmlMarshaller.XMLLocation;
 import iristk.system.Event;
 import iristk.flow.*;
-import iristk.speech.Console;
-import iristk.util.Record;
-import static iristk.util.Converters.*;
-import static iristk.flow.State.*;
 
 public class TutoringFlow extends iristk.flow.Flow {
 
 	private Integer number;
 	private Integer guesses;
-	private String answer;
+	private Grammar g;
 
 	private void initVariables() {
+		g = (Grammar) new Grammar();
 	}
 
 	public Integer getNumber() {
@@ -35,19 +31,19 @@ public class TutoringFlow extends iristk.flow.Flow {
 		this.guesses = value;
 	}
 
-	public String getAnswer() {
-		return this.answer;
+	public Grammar getG() {
+		return this.g;
 	}
 
-	public void setAnswer(String value) {
-		this.answer = value;
+	public void setG(Grammar value) {
+		this.g = value;
 	}
 
 	@Override
 	public Object getVariable(String name) {
 		if (name.equals("number")) return this.number;
 		if (name.equals("guesses")) return this.guesses;
-		if (name.equals("answer")) return this.answer;
+		if (name.equals("g")) return this.g;
 		return null;
 	}
 
@@ -74,33 +70,31 @@ public class TutoringFlow extends iristk.flow.Flow {
 		public void onentry() throws Exception {
 			int eventResult;
 			Event event = new Event("state.enter");
-			// Line: 11
+			// Line: 12
 			try {
 				EXECUTION: {
-					int count = getCount(1811075214) + 1;
-					incrCount(1811075214);
-					// Line: 12
-					number = 10;
+					int count = getCount(1588970020) + 1;
+					incrCount(1588970020);
 					// Line: 13
+					number = 10;
+					// Line: 14
 					guesses = 0;
 					iristk.flow.DialogFlow.say state0 = new iristk.flow.DialogFlow.say();
 					StringCreator string1 = new StringCreator();
 					string1.append("Could you compute how much is 5 + 5?");
 					state0.setText(string1.toString());
-					if (!flowThread.callState(state0, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 11, 12)))) {
+					if (!flowThread.callState(state0, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 12, 12)))) {
 						eventResult = EVENT_ABORTED;
 						break EXECUTION;
 					}
-					// Line: 15
-					Producer.serverPublish("Could you compute how much is 5 + 5?");
-					// Line: 16
+					// Line: 17
 					Guess state2 = new Guess();
-					flowThread.gotoState(state2, currentState, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 16, 25)));
+					flowThread.gotoState(state2, currentState, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 17, 25)));
 					eventResult = EVENT_ABORTED;
 					break EXECUTION;
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 11, 12));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 12, 12));
 			}
 		}
 
@@ -132,19 +126,16 @@ public class TutoringFlow extends iristk.flow.Flow {
 		public void onentry() throws Exception {
 			int eventResult;
 			Event event = new Event("state.enter");
-			// Line: 21
+			// Line: 22
 			try {
 				EXECUTION: {
-					int count = getCount(183264084) + 1;
-					incrCount(183264084);
-					iristk.flow.DialogFlow.listen state3 = new iristk.flow.DialogFlow.listen();
-					if (!flowThread.callState(state3, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 21, 12)))) {
-						eventResult = EVENT_ABORTED;
-						break EXECUTION;
-					}
+					int count = getCount(476402209) + 1;
+					incrCount(476402209);
+					// Line: 23
+					//send(new Event("action.waitForSpeech"));
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 21, 12));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 22, 12));
 			}
 		}
 
@@ -152,146 +143,138 @@ public class TutoringFlow extends iristk.flow.Flow {
 		public int onFlowEvent(Event event) throws Exception {
 			int eventResult;
 			int count;
-			// Line: 24
+			// Line: 26
 			try {
-				count = getCount(476402209) + 1;
-				if (event.triggers("sense.user.speak")) {
-					if (event.has("sem:number")) {
-						incrCount(476402209);
+				count = getCount(460332449) + 1;
+				if (event.triggers("sense.user.type")) {
+					if (g.getGrammar((String)event.get("text")) != null) {
+						incrCount(460332449);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
-							// Line: 25
-							guesses++;
-							// Line: 26
-							answer = Console.getAnswer();
 							// Line: 27
-							if (asInteger(answer) == number) {
-								// Line: 28
+							guesses++;
+							// Line: 28
+							if (g.getGrammar((String)event.get("text")) == number) {
+								// Line: 29
 								if (guesses == 1) {
-									iristk.flow.DialogFlow.say state4 = new iristk.flow.DialogFlow.say();
-									StringCreator string5 = new StringCreator();
-									string5.append("That was correct, you find it on the first try.");
-									state4.setText(string5.toString());
-									if (!flowThread.callState(state4, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 28, 29)))) {
+									iristk.flow.DialogFlow.say state3 = new iristk.flow.DialogFlow.say();
+									StringCreator string4 = new StringCreator();
+									string4.append("That was correct, you find it on the first try.");
+									state3.setText(string4.toString());
+									if (!flowThread.callState(state3, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 29, 29)))) {
 										eventResult = EVENT_ABORTED;
 										break EXECUTION;
 									}
-									// Line: 30
-									Producer.serverPublish("That was correct, you find it on the first try.");
 									// Line: 31
 								} else {
-									iristk.flow.DialogFlow.say state6 = new iristk.flow.DialogFlow.say();
-									StringCreator string7 = new StringCreator();
-									string7.append("Great! You've found it this time.");
-									state6.setText(string7.toString());
-									if (!flowThread.callState(state6, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 28, 29)))) {
+									iristk.flow.DialogFlow.say state5 = new iristk.flow.DialogFlow.say();
+									StringCreator string6 = new StringCreator();
+									string6.append("Great! You've found it this time.");
+									state5.setText(string6.toString());
+									if (!flowThread.callState(state5, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 29, 29)))) {
 										eventResult = EVENT_ABORTED;
 										break EXECUTION;
 									}
-									// Line: 33
-									Producer.serverPublish("Great! You've found it this time.");
 								}
-								// Line: 35
-								CheckAgain state8 = new CheckAgain();
-								flowThread.gotoState(state8, currentState, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 35, 31)));
+								// Line: 34
+								CheckAgain state7 = new CheckAgain();
+								flowThread.gotoState(state7, currentState, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 34, 31)));
 								eventResult = EVENT_ABORTED;
 								break EXECUTION;
-								// Line: 36
-							} else if (asInteger(event.get("sem:number")) == 9 || asInteger(event.get("sem:number")) == 11) {
-								iristk.flow.DialogFlow.say state9 = new iristk.flow.DialogFlow.say();
-								StringCreator string10 = new StringCreator();
-								string10.append("You're almost correct! Let's try one more time.");
-								state9.setText(string10.toString());
-								if (!flowThread.callState(state9, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 27, 43)))) {
+								// Line: 35
+							} else if (g.getGrammar((String)event.get("text")) == (number - 1) || g.getGrammar((String)event.get("text")) == (number + 1)) {
+								iristk.flow.DialogFlow.say state8 = new iristk.flow.DialogFlow.say();
+								StringCreator string9 = new StringCreator();
+								string9.append("You're almost correct! Let's try one more time.");
+								state8.setText(string9.toString());
+								if (!flowThread.callState(state8, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 28, 58)))) {
 									eventResult = EVENT_ABORTED;
 									break EXECUTION;
 								}
+								// Line: 37
+								flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 37, 15)));
+								eventResult = EVENT_ABORTED;
+								break EXECUTION;
 								// Line: 38
-								Producer.serverPublish("You're almost correct! Let's try one more time.");
+							} else if (g.getGrammar((String)event.get("text")) > number) {
 								// Line: 39
-								flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 39, 15)));
-								eventResult = EVENT_ABORTED;
-								break EXECUTION;
-								// Line: 40
-							} else if (asInteger(event.get("sem:number")) > number) {
-								// Line: 41
-								boolean chosen11 = false;
-								boolean matching12 = true;
-								while (!chosen11 && matching12) {
-									int rand13 = random(204349222, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
-									matching12 = false;
+								boolean chosen10 = false;
+								boolean matching11 = true;
+								while (!chosen10 && matching11) {
+									int rand12 = random(2143192188, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
+									matching11 = false;
 									if (true) {
-										matching12 = true;
-										if (rand13 >= 0 && rand13 < 1) {
-											chosen11 = true;
-											iristk.flow.DialogFlow.say state14 = new iristk.flow.DialogFlow.say();
-											StringCreator string15 = new StringCreator();
-											string15.append("That was too high, think again.");
-											state14.setText(string15.toString());
-											if (!flowThread.callState(state14, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 41, 13)))) {
+										matching11 = true;
+										if (rand12 >= 0 && rand12 < 1) {
+											chosen10 = true;
+											iristk.flow.DialogFlow.say state13 = new iristk.flow.DialogFlow.say();
+											StringCreator string14 = new StringCreator();
+											string14.append("That was too high, think again.");
+											state13.setText(string14.toString());
+											if (!flowThread.callState(state13, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 39, 13)))) {
 												eventResult = EVENT_ABORTED;
 												break EXECUTION;
 											}
 										}
 									}
 									if (true) {
-										matching12 = true;
-										if (rand13 >= 1 && rand13 < 2) {
-											chosen11 = true;
-											iristk.flow.DialogFlow.say state16 = new iristk.flow.DialogFlow.say();
-											StringCreator string17 = new StringCreator();
-											string17.append("That's still not quite it, let's think again.");
-											state16.setText(string17.toString());
-											if (!flowThread.callState(state16, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 41, 13)))) {
+										matching11 = true;
+										if (rand12 >= 1 && rand12 < 2) {
+											chosen10 = true;
+											iristk.flow.DialogFlow.say state15 = new iristk.flow.DialogFlow.say();
+											StringCreator string16 = new StringCreator();
+											string16.append("That's still not quite it, let's think again.");
+											state15.setText(string16.toString());
+											if (!flowThread.callState(state15, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 39, 13)))) {
 												eventResult = EVENT_ABORTED;
 												break EXECUTION;
 											}
 										}
 									}
 								}
-								// Line: 45
-								flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 45, 15)));
+								// Line: 43
+								flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 43, 15)));
 								eventResult = EVENT_ABORTED;
 								break EXECUTION;
-								// Line: 46
+								// Line: 44
 							} else {
-								// Line: 47
-								boolean chosen18 = false;
-								boolean matching19 = true;
-								while (!chosen18 && matching19) {
-									int rand20 = random(2110121908, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
-									matching19 = false;
+								// Line: 45
+								boolean chosen17 = false;
+								boolean matching18 = true;
+								while (!chosen17 && matching18) {
+									int rand19 = random(231685785, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
+									matching18 = false;
 									if (true) {
-										matching19 = true;
-										if (rand20 >= 0 && rand20 < 1) {
-											chosen18 = true;
-											iristk.flow.DialogFlow.say state21 = new iristk.flow.DialogFlow.say();
-											StringCreator string22 = new StringCreator();
-											string22.append("That was too low, think again.");
-											state21.setText(string22.toString());
-											if (!flowThread.callState(state21, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 47, 13)))) {
+										matching18 = true;
+										if (rand19 >= 0 && rand19 < 1) {
+											chosen17 = true;
+											iristk.flow.DialogFlow.say state20 = new iristk.flow.DialogFlow.say();
+											StringCreator string21 = new StringCreator();
+											string21.append("That was too low, think again.");
+											state20.setText(string21.toString());
+											if (!flowThread.callState(state20, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 45, 13)))) {
 												eventResult = EVENT_ABORTED;
 												break EXECUTION;
 											}
 										}
 									}
 									if (true) {
-										matching19 = true;
-										if (rand20 >= 1 && rand20 < 2) {
-											chosen18 = true;
-											iristk.flow.DialogFlow.say state23 = new iristk.flow.DialogFlow.say();
-											StringCreator string24 = new StringCreator();
-											string24.append("I'm sure you can find it, let's try again.");
-											state23.setText(string24.toString());
-											if (!flowThread.callState(state23, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 47, 13)))) {
+										matching18 = true;
+										if (rand19 >= 1 && rand19 < 2) {
+											chosen17 = true;
+											iristk.flow.DialogFlow.say state22 = new iristk.flow.DialogFlow.say();
+											StringCreator string23 = new StringCreator();
+											string23.append("I'm sure you can find it, let's try again.");
+											state22.setText(string23.toString());
+											if (!flowThread.callState(state22, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 45, 13)))) {
 												eventResult = EVENT_ABORTED;
 												break EXECUTION;
 											}
 										}
 									}
 								}
-								// Line: 51
-								flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 51, 15)));
+								// Line: 49
+								flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 49, 15)));
 								eventResult = EVENT_ABORTED;
 								break EXECUTION;
 							}
@@ -300,7 +283,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 					}
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 24, 61));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 26, 83));
 			}
 			eventResult = super.onFlowEvent(event);
 			if (eventResult != EVENT_IGNORED) return eventResult;
@@ -326,29 +309,27 @@ public class TutoringFlow extends iristk.flow.Flow {
 		public void onentry() throws Exception {
 			int eventResult;
 			Event event = new Event("state.enter");
-			// Line: 57
+			// Line: 55
 			try {
 				EXECUTION: {
-					int count = getCount(1023487453) + 1;
-					incrCount(1023487453);
-					iristk.flow.DialogFlow.say state25 = new iristk.flow.DialogFlow.say();
-					StringCreator string26 = new StringCreator();
-					string26.append("Do you want to try again?");
-					state25.setText(string26.toString());
-					if (!flowThread.callState(state25, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 57, 12)))) {
+					int count = getCount(32374789) + 1;
+					incrCount(32374789);
+					iristk.flow.DialogFlow.say state24 = new iristk.flow.DialogFlow.say();
+					StringCreator string25 = new StringCreator();
+					string25.append("Do you want to try again?");
+					state24.setText(string25.toString());
+					if (!flowThread.callState(state24, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 55, 12)))) {
 						eventResult = EVENT_ABORTED;
 						break EXECUTION;
 					}
-					// Line: 59
-					Producer.serverPublish("Do you want to try again?");
-					iristk.flow.DialogFlow.listen state27 = new iristk.flow.DialogFlow.listen();
-					if (!flowThread.callState(state27, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 57, 12)))) {
+					iristk.flow.DialogFlow.listen state26 = new iristk.flow.DialogFlow.listen();
+					if (!flowThread.callState(state26, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 55, 12)))) {
 						eventResult = EVENT_ABORTED;
 						break EXECUTION;
 					}
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 57, 12));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 55, 12));
 			}
 		}
 
@@ -356,27 +337,25 @@ public class TutoringFlow extends iristk.flow.Flow {
 		public int onFlowEvent(Event event) throws Exception {
 			int eventResult;
 			int count;
-			// Line: 62
+			// Line: 59
 			try {
-				count = getCount(515132998) + 1;
-				if (event.triggers("sense.user.speak")) {
-					if (event.has("sem:yes")) {
-						incrCount(515132998);
+				count = getCount(1973538135) + 1;
+				if (event.triggers("sense.user.type")) {
+					if (event.get("text").equals("yes")) {
+						incrCount(1973538135);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
-							iristk.flow.DialogFlow.say state28 = new iristk.flow.DialogFlow.say();
-							StringCreator string29 = new StringCreator();
-							string29.append("Okay, let's try again.");
-							state28.setText(string29.toString());
-							if (!flowThread.callState(state28, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 62, 58)))) {
+							iristk.flow.DialogFlow.say state27 = new iristk.flow.DialogFlow.say();
+							StringCreator string28 = new StringCreator();
+							string28.append("Okay, let's try again.");
+							state27.setText(string28.toString());
+							if (!flowThread.callState(state27, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 59, 60)))) {
 								eventResult = EVENT_ABORTED;
 								break EXECUTION;
 							}
-							// Line: 64
-							Producer.serverPublish("Okay, let's try again.");
-							// Line: 65
-							Start state30 = new Start();
-							flowThread.gotoState(state30, currentState, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 65, 25)));
+							// Line: 61
+							Start state29 = new Start();
+							flowThread.gotoState(state29, currentState, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 61, 25)));
 							eventResult = EVENT_ABORTED;
 							break EXECUTION;
 						}
@@ -384,34 +363,32 @@ public class TutoringFlow extends iristk.flow.Flow {
 					}
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 62, 58));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 59, 60));
 			}
-			// Line: 67
+			// Line: 63
 			try {
-				count = getCount(1651191114) + 1;
-				if (event.triggers("sense.user.speak")) {
-					if (event.has("sem:no")) {
-						incrCount(1651191114);
+				count = getCount(1865127310) + 1;
+				if (event.triggers("sense.user.type")) {
+					if (event.get("text").equals("no")) {
+						incrCount(1865127310);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
-							iristk.flow.DialogFlow.say state31 = new iristk.flow.DialogFlow.say();
-							StringCreator string32 = new StringCreator();
-							string32.append("Okay, I was glad to help you.");
-							state31.setText(string32.toString());
-							if (!flowThread.callState(state31, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 67, 57)))) {
+							iristk.flow.DialogFlow.say state30 = new iristk.flow.DialogFlow.say();
+							StringCreator string31 = new StringCreator();
+							string31.append("Okay, I was glad to help you.");
+							state30.setText(string31.toString());
+							if (!flowThread.callState(state30, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 63, 61)))) {
 								eventResult = EVENT_ABORTED;
 								break EXECUTION;
 							}
-							// Line: 69
-							Producer.serverPublish("Okay, I was glad to help you.");
-							// Line: 70
+							// Line: 65
 							System.exit(0);
 						}
 						if (eventResult != EVENT_IGNORED) return eventResult;
 					}
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 67, 57));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 63, 61));
 			}
 			eventResult = super.onFlowEvent(event);
 			if (eventResult != EVENT_IGNORED) return eventResult;
@@ -443,78 +420,51 @@ public class TutoringFlow extends iristk.flow.Flow {
 		public int onFlowEvent(Event event) throws Exception {
 			int eventResult;
 			int count;
-			// Line: 75
+			// Line: 70
 			try {
-				count = getCount(212628335) + 1;
-				if (event.triggers("sense.user.silence")) {
-					incrCount(212628335);
-					eventResult = EVENT_CONSUMED;
-					EXECUTION: {
-						iristk.flow.DialogFlow.say state33 = new iristk.flow.DialogFlow.say();
-						StringCreator string34 = new StringCreator();
-						string34.append("I am sorry, I didn't hear anything.");
-						state33.setText(string34.toString());
-						if (!flowThread.callState(state33, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 75, 38)))) {
-							eventResult = EVENT_ABORTED;
-							break EXECUTION;
-						}
-						// Line: 77
-						Producer.serverPublish("I am sorry, I didn't hear anything.");
-						// Line: 78
-						flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 78, 14)));
-						eventResult = EVENT_ABORTED;
-						break EXECUTION;
-					}
-					if (eventResult != EVENT_IGNORED) return eventResult;
-				}
-			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 75, 38));
-			}
-			// Line: 81
-			try {
-				count = getCount(2111991224) + 1;
-				if (event.triggers("sense.user.speak")) {
-					if (event.has("sem:dontknow")) {
-						incrCount(2111991224);
+				count = getCount(1651191114) + 1;
+				if (event.triggers("sense.user.type")) {
+					if (event.getString("text").contains("help")) {
+						incrCount(1651191114);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
-							// Line: 82
-							boolean chosen35 = false;
-							boolean matching36 = true;
-							while (!chosen35 && matching36) {
-								int rand37 = random(292938459, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
-								matching36 = false;
+							// Line: 71
+							boolean chosen32 = false;
+							boolean matching33 = true;
+							while (!chosen32 && matching33) {
+								int rand34 = random(1586600255, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
+								matching33 = false;
 								if (true) {
-									matching36 = true;
-									if (rand37 >= 0 && rand37 < 1) {
-										chosen35 = true;
-										iristk.flow.DialogFlow.say state38 = new iristk.flow.DialogFlow.say();
-										StringCreator string39 = new StringCreator();
-										string39.append("You could try counting on your fingers.");
-										state38.setText(string39.toString());
-										if (!flowThread.callState(state38, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 82, 13)))) {
+									matching33 = true;
+									if (rand34 >= 0 && rand34 < 1) {
+										chosen32 = true;
+										iristk.flow.DialogFlow.say state35 = new iristk.flow.DialogFlow.say();
+										StringCreator string36 = new StringCreator();
+										string36.append("You could try counting on your fingers.");
+										state35.setText(string36.toString());
+										if (!flowThread.callState(state35, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 71, 13)))) {
 											eventResult = EVENT_ABORTED;
 											break EXECUTION;
 										}
 									}
 								}
 								if (true) {
-									matching36 = true;
-									if (rand37 >= 1 && rand37 < 2) {
-										chosen35 = true;
-										iristk.flow.DialogFlow.say state40 = new iristk.flow.DialogFlow.say();
-										StringCreator string41 = new StringCreator();
-										string41.append("Try to see this problem as if you had to sum 5 apples and 5 bananas.");
-										state40.setText(string41.toString());
-										if (!flowThread.callState(state40, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 82, 13)))) {
+									matching33 = true;
+									if (rand34 >= 1 && rand34 < 2) {
+										chosen32 = true;
+										iristk.flow.DialogFlow.say state37 = new iristk.flow.DialogFlow.say();
+										StringCreator string38 = new StringCreator();
+										string38.append("Try to see this problem as if you had to sum 5 apples and 5 bananas.");
+										state37.setText(string38.toString());
+										if (!flowThread.callState(state37, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 71, 13)))) {
 											eventResult = EVENT_ABORTED;
 											break EXECUTION;
 										}
 									}
 								}
 							}
-							// Line: 86
-							flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 86, 23)));
+							// Line: 75
+							flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 75, 23)));
 							eventResult = EVENT_ABORTED;
 							break EXECUTION;
 						}
@@ -522,34 +472,32 @@ public class TutoringFlow extends iristk.flow.Flow {
 					}
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 81, 64));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 70, 80));
 			}
-			// Line: 89
+			// Line: 78
 			try {
-				count = getCount(405662939) + 1;
-				if (event.triggers("sense.user.speak")) {
-					incrCount(405662939);
+				count = getCount(932583850) + 1;
+				if (event.triggers("sense.user.type")) {
+					incrCount(932583850);
 					eventResult = EVENT_CONSUMED;
 					EXECUTION: {
-						iristk.flow.DialogFlow.say state42 = new iristk.flow.DialogFlow.say();
-						StringCreator string43 = new StringCreator();
-						string43.append("I am sorry, I didn't get that.");
-						state42.setText(string43.toString());
-						if (!flowThread.callState(state42, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 89, 36)))) {
+						iristk.flow.DialogFlow.say state39 = new iristk.flow.DialogFlow.say();
+						StringCreator string40 = new StringCreator();
+						string40.append("I am sorry, I didn't get that.");
+						state39.setText(string40.toString());
+						if (!flowThread.callState(state39, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 78, 35)))) {
 							eventResult = EVENT_ABORTED;
 							break EXECUTION;
 						}
-						// Line: 91
-						Producer.serverPublish("I am sorry, I didn't get that.");
-						// Line: 92
-						flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 92, 14)));
+						// Line: 80
+						flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 80, 14)));
 						eventResult = EVENT_ABORTED;
 						break EXECUTION;
 					}
 					if (eventResult != EVENT_IGNORED) return eventResult;
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 89, 36));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 78, 35));
 			}
 			eventResult = super.onFlowEvent(event);
 			if (eventResult != EVENT_IGNORED) return eventResult;
