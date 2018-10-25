@@ -11,7 +11,8 @@
 package iristk.speech;
 
 import iristk.app.tutoring.Grammar;
-import iristk.app.tutoring.Producer;
+import iristk.app.tutoring.MessageQueue;
+import iristk.app.tutoring.Producer_;
 import iristk.audio.AudioPort;
 import iristk.system.Event;
 import iristk.system.InitializationException;
@@ -92,8 +93,9 @@ public class Console extends IrisModule {
 					sendSpeech(textInput.getText());
 					
 					//Added: publish message
-					try {										
-						Producer.clientPublish(textInput.getText());
+					try {	
+						//Producer_ p = new Producer_();
+						//p.clientPublish(textInput.getText());
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -180,8 +182,11 @@ public class Console extends IrisModule {
 						String text = getText(event);
 						
 						//Added: publish message
-						try {										
-							Producer.serverPublish(text);
+						try {				
+							//Producer_ p = new Producer_();
+							//p.serverPublish(text);
+							MessageQueue mq = new MessageQueue();
+							mq.publish("test-exchange", "from_server", text);
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -203,7 +208,7 @@ public class Console extends IrisModule {
 				send(speech);									
 			}*/									
 			
-		} else if (event.getName().equals("action.waitForSpeech")){
+		}else if (event.getName().equals("action.waitForSpeech")){
 			textInput.setEditable(true);
 		} else if (event.getName().equals("sense.speech.rec")) {
 		
@@ -374,7 +379,6 @@ public class Console extends IrisModule {
 		public RecognizerFactory getRecognizerFactory() {
 			return null;
 		}
-		
 	}
 	
 	

@@ -19,7 +19,7 @@
 	
 	<state id="Guess" extends="Dialog">
 		<onentry>
-			<exec>send(new Event("action.waitForSpeech"))</exec>
+			
 		</onentry>
 		
 		<onevent name="sense.user.type" cond="g.getGrammar((String)event:text) != null">

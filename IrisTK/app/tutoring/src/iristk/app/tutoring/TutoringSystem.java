@@ -19,10 +19,14 @@ import iristk.system.SimpleDialogSystem;
 import iristk.util.Language;
 
 import java.io.File;
+import java.io.IOException;
 
+import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.DefaultConsumer;
+import com.rabbitmq.client.Envelope;
 
 import iristk.cfg.SRGSGrammar;
 import iristk.flow.FlowModule;
@@ -51,8 +55,9 @@ public class TutoringSystem {
 		system.setupSynthesizer(new WindowsSynthesizer(), Gender.FEMALE);
 		
 		// Add the flow
-		system.addModule(new FlowModule(new TutoringFlow()));
-		//system.addModule(new NewModule());
+		//system.addModule(new FlowModule(new TutoringFlow()));
+		system.addModule(new MessageQueue());
+		system.addModule(new NewModule());
 		//system.addModule(new HelloModule());
 		
 		// Load a grammar in the recognizer
@@ -64,11 +69,17 @@ public class TutoringSystem {
 	}
 
 	public static void main(String[] args) throws Exception {
-		Producer.serverPublish("Connected!");
 		
-		Consumer consumer = new Consumer();
-		Consumer.clientConsume();
-		Consumer.serverConsume();
+		//Producer_ p = new Producer_();
+		//p.serverPublish("Connected!");
+		
+		//Consumer_ m = new Consumer_();
+		//m.serverConsume();
+		//m.clientConsume();
+		
+		MessageQueue mq = new MessageQueue();
+		mq.bindQueue("test-exchange", "from_client");
+		mq.consume();
 		
 		new TutoringSystem();
 		

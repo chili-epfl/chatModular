@@ -3,12 +3,14 @@ package iristk.app.tutoring;
 import iristk.system.Event;
 import iristk.system.InitializationException;
 import iristk.system.IrisModule;
+import iristk.system.IrisSystem;
 
 public class NewModule extends IrisModule {
 	
 	private Integer number;
 	private Integer guesses;
 	private Grammar g = new Grammar();
+	
 
 	@Override
 	public void onEvent(Event event) {
@@ -16,16 +18,11 @@ public class NewModule extends IrisModule {
         	number = 10;
         	guesses = 0;
         	say("Could you compute how much is 5 + 5");
+        	//Event newEvent = new Event("action.waitForSpeech");
         }else if (event.getName().equals("sense.user.type")) {
         	if(event.has("text")) {
         		check(event.getString("text"));
         	}
-        }
-        else if (event.triggers("sense.speech.rec**")) {
-        
-        } else if (event.triggers("monitor.speech.end")) {
-            // The synthesizer completed, listen for speech again
-            
         }
     }
 	
