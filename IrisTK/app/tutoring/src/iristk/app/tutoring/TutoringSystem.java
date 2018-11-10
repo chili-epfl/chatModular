@@ -60,7 +60,8 @@ public class TutoringSystem {
 		system.addModule(queue);
 		queue.bindQueue("test-exchange", "from_client");
 		queue.consume();
-		system.addModule(new NewModule());
+		system.addModule(new ForumModule());
+		//system.addModule(new TutoringModule());
 		//system.addModule(new HelloModule());
 		
 		// Load a grammar in the recognizer

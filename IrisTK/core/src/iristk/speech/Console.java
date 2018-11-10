@@ -92,10 +92,10 @@ public class Console extends IrisModule {
 				if (key.getKeyCode() == 10) {		//10 => Enter
 					sendSpeech(textInput.getText());
 					
-					//Added: publish message
+					//Added: publish message (ONLY FOR FORUMMODULE)
 					try {	
-						//Producer_ p = new Producer_();
-						//p.clientPublish(textInput.getText());
+						MessageQueue mq = new MessageQueue();
+						mq.publish("test-exchange", "from_server", textInput.getText());
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -181,12 +181,11 @@ public class Console extends IrisModule {
 					try {
 						String text = getText(event);
 						
-						//Added: publish message
+						//Added: publish message  (ONLY FOR TUTORINGMODULE)
 						try {				
-							MessageQueue mq = new MessageQueue();
-							mq.publish("test-exchange", "from_server", text);
+							//MessageQueue mq = new MessageQueue();
+							//mq.publish("test-exchange", "from_server", text);
 						} catch (Exception e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						
@@ -209,6 +208,11 @@ public class Console extends IrisModule {
 		}else if(event.getName().equals("sense.user.receive")) {
 			if(event.has("text")) {
         		String text = event.getString("text");
+        		try {
+					doc.insertString(doc.getLength(), "Bot says: \n", null);
+				} catch (BadLocationException e1) {
+					e1.printStackTrace();
+				} 
         		textPane.setParagraphAttributes(getStyle(event.getString("agent", "system")), true);
 				try {
 					doc.insertString(doc.getLength(), text + "\n", null);
