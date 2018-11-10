@@ -183,8 +183,6 @@ public class Console extends IrisModule {
 						
 						//Added: publish message
 						try {				
-							//Producer_ p = new Producer_();
-							//p.serverPublish(text);
 							MessageQueue mq = new MessageQueue();
 							mq.publish("test-exchange", "from_server", text);
 						} catch (Exception e) {
@@ -208,6 +206,17 @@ public class Console extends IrisModule {
 				send(speech);									
 			}*/									
 			
+		}else if(event.getName().equals("sense.user.receive")) {
+			if(event.has("text")) {
+        		String text = event.getString("text");
+        		textPane.setParagraphAttributes(getStyle(event.getString("agent", "system")), true);
+				try {
+					doc.insertString(doc.getLength(), text + "\n", null);
+				} catch (BadLocationException e) {
+					e.printStackTrace();
+				}
+				textPane.setCaretPosition(doc.getLength());
+			}
 		}else if (event.getName().equals("action.waitForSpeech")){
 			textInput.setEditable(true);
 		} else if (event.getName().equals("sense.speech.rec")) {

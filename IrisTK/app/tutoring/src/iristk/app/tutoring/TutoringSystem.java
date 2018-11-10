@@ -56,7 +56,10 @@ public class TutoringSystem {
 		
 		// Add the flow
 		//system.addModule(new FlowModule(new TutoringFlow()));
-		system.addModule(new MessageQueue());
+		MessageQueue queue = new MessageQueue();
+		system.addModule(queue);
+		queue.bindQueue("test-exchange", "from_client");
+		queue.consume();
 		system.addModule(new NewModule());
 		//system.addModule(new HelloModule());
 		
@@ -69,17 +72,6 @@ public class TutoringSystem {
 	}
 
 	public static void main(String[] args) throws Exception {
-		
-		//Producer_ p = new Producer_();
-		//p.serverPublish("Connected!");
-		
-		//Consumer_ m = new Consumer_();
-		//m.serverConsume();
-		//m.clientConsume();
-		
-		MessageQueue mq = new MessageQueue();
-		mq.bindQueue("test-exchange", "from_client");
-		mq.consume();
 		
 		new TutoringSystem();
 		

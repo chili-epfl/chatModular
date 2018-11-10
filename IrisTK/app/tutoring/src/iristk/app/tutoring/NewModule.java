@@ -23,6 +23,10 @@ public class NewModule extends IrisModule {
         	if(event.has("text")) {
         		check(event.getString("text"));
         	}
+        }else if (event.getName().equals("sense.user.receive")) {
+        	if(event.has("text")) {
+        		check(event.getString("text"));
+        	}
         }
     }
 	

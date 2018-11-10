@@ -22,9 +22,6 @@ public class MessageQueue extends IrisModule {
 	private Channel channel;
 	private String queueName;
 	private Consumer consumer;
-	private Integer number;
-	private Integer guesses;
-	private Grammar g = new Grammar();
 	
 	public MessageQueue() throws Exception {
 		 factory = new ConnectionFactory();
@@ -55,7 +52,6 @@ public class MessageQueue extends IrisModule {
 	          String message = new String(body, "UTF-8");
 	          System.out.println("Client received '" + message);
 	          receive(message);
-	          //channel.basicAck(envelope.getDeliveryTag(), false);
 	        }
 	        
 	      };
@@ -66,11 +62,10 @@ public class MessageQueue extends IrisModule {
 		 channel.basicConsume(queueName, autoAck, consumer);
 	}
 	
-	//Event I'd like to send with the text received
 	private void receive(String text) {
 		Event newEvent = new Event("sense.user.receive");
     	newEvent.put("text", text);
-		send(newEvent);					//Never works because system is null, why?
+    	send(newEvent);
 	}
 	
 	
