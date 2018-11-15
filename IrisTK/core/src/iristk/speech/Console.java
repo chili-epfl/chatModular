@@ -105,7 +105,7 @@ public class Console extends IrisModule {
 					try {
 						//paint it green
 						SimpleAttributeSet style = new SimpleAttributeSet();		
-						StyleConstants.setForeground(style, Color.GREEN);
+						StyleConstants.setForeground(style, Color.BLUE);
 						textPane.setParagraphAttributes(style, true);
 						
 						//insert on console

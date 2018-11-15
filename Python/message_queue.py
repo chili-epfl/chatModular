@@ -2,9 +2,8 @@
 
 import pika
 import yaml
-import views
-#from chatbot_tutorial import views
-
+#import chat_answers				#for original files
+import my_chat_answers				#for files that I generated
 
 class MessageQueue(object):
     def __init__(self, name):
@@ -41,7 +40,7 @@ class MessageQueue(object):
             if type(body) == bytes:
                 body = body.decode("utf-8")
             print("Received %r" %body)
-            views.chatbot_answer(body, 4)
+            my_chat_answers.chatbot_answer(body, 1)							#change here
         
         self.channel.basic_consume(callback, queue=queue_name, no_ack=True)
         print('Waiting for messages. To exit press CTRL+C')
