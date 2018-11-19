@@ -27,7 +27,7 @@ class MessageQueue(object):
 
     def publish(self, exchange='', routing_key='', body={}):
         self.channel.basic_publish(exchange=exchange, routing_key=routing_key, body=body)
-     
+
 
     def bind_queue(self, exchange='', routing_key='', queue_name=None):
         result = self.channel.queue_declare(exclusive=True)
@@ -40,7 +40,11 @@ class MessageQueue(object):
             if type(body) == bytes:
                 body = body.decode("utf-8")
             print("Received %r" %body)
-            my_chat_answers.chatbot_answer(body, 1)							#change here
+
+            if body == 'stop':
+                self.stop()
+            else:
+                my_chat_answers.chatbot_answer(body, 2)							#change here
         
         self.channel.basic_consume(callback, queue=queue_name, no_ack=True)
         print('Waiting for messages. To exit press CTRL+C')

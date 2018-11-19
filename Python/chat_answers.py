@@ -12,8 +12,7 @@ tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 print('Loading word2vec...')
 model = gensim.models.KeyedVectors.load_word2vec_format('files/GoogleNews-vectors-negative300.bin', binary=True)
 print('Loaded word2vec.')
-#tfp_df = pd.read_pickle('files/HolidayTruth/tfp_df_ht.pkl')
-tfp_df = pd.read_pickle('files/TripAdvisor/tfp_df_ta.pkl')
+tfp_df = pd.read_pickle('files/tfp_df.pkl')
 print('Loaded tfp_df.')
 max_sentences = 1
 
@@ -81,16 +80,14 @@ def compute_similarity(row, sent_vec):
     title_sim = 0
     title_word2vec = row['Title_word2vec']
     if len(title_word2vec) > 0:
-        if len(title_word2vec[0]) > 0:
-            title_sim = cosine_similarity(sent_vec, title_word2vec[0])
+        title_sim = cosine_similarity(sent_vec, title_word2vec)
     return title_sim
 
 def compute_separate_similarity(row, sent_vecs):
     title_sim = 0
     title_word2vec = row['Title_word2vec']
     if len(title_word2vec) > 0:
-        if len(title_word2vec[0]) > 0:
-            title_sim = np.dot(sent_vecs[0], title_word2vec[0])/(np.linalg.norm(sent_vecs[0])*np.linalg.norm(title_word2vec[0]))
+        title_sim = np.dot(sent_vecs[0], title_word2vec)/(np.linalg.norm(sent_vecs[0])*np.linalg.norm(title_word2vec))
     fp_sim = text_to_text_similarity(sent_vecs[1:], row['First_Post_word2vec'])
     return title_sim + fp_sim
 
@@ -110,18 +107,12 @@ def get_most_similar_title(sentences, sent_vecs):
     return tfp_df.loc[title_fp_sim.idxmax()]
 
 def get_response_sentences(sentences, sent_vecs, link, max_sentences):
-    #answer_df = pd.read_pickle('files/HolidayTruth/msg_df_ht.pkl')
-    answer_df = pd.read_pickle('files/TripAdvisor/msg_df_ta.pkl')
-    answer_df = answer_df[answer_df['Link'].map(lambda x: x == link)]
-    if answer_df.empty:
-        s = 'I did not find a matching sentence'
-        return s
-    
-    best_answer = answer_df.loc[answer_df['Reply_word2vec'].apply(lambda other_vecs: 
-                                                     text_to_text_similarity(sent_vecs, other_vecs)).idxmax()]
-    
-    best_sentence_idx = np.argmax([sent_to_text_similarity(sent_vec, sent_vecs) for sent_vec in best_answer.Reply_word2vec if len(sent_vec)])
-    reply_sentences = best_answer.Reply
+    answer_df = pd.read_pickle('files/msg_df/msg_df_{}.pkl'.format(link))
+    best_answer = answer_df.loc[answer_df[answer_df.Usefulness == max(answer_df.Usefulness)]
+                                .Reply_word2vec.apply(lambda other_vecs:
+                                                      text_to_text_similarity(sent_vecs, other_vecs)).idxmax()]
+    best_sentence_idx = np.argmax([sent_to_text_similarity(sent_vec, sent_vecs) for sent_vec in best_answer.Reply_word2vec])
+    reply_sentences = ast.literal_eval(best_answer.Reply)
     if max_sentences <= 1:
         return reply_sentences[best_sentence_idx]
     else:
@@ -129,17 +120,17 @@ def get_response_sentences(sentences, sent_vecs, link, max_sentences):
         sent_count = len(reply_sentences)
         lower_bound = best_sentence_idx - context_sent_count
         upper_bound = best_sentence_idx + context_sent_count + 1
-        return ' '.join(reply_sentences[max(0, lower_bound - max(0, upper_bound - sent_count)): 
+        return ' '.join(reply_sentences[max(0, lower_bound - max(0, upper_bound - sent_count)):
                                         min(upper_bound + max(0, 0 - lower_bound) + ((max_sentences - 1) % 2), sent_count)])
 
 def chatbot_answer(question, max_sentences=1):
-    mq = message_queue.MessageQueue('sender')
-    try:
-        sentences = tokenizer.tokenize(question)
-        sent_vecs = [get_sentence_vector(sent) for sent in sentences]
-        most_similar_title = get_most_similar_title(sentences, sent_vecs)
-        response = get_response_sentences(sentences, sent_vecs, most_similar_title.Link, max_sentences)
-        mq.publish(exchange="test-exchange", routing_key="from_client", body=response)
-    except:
-        mq.publish(exchange="test-exchange", routing_key="from_client", body="I'm sorry I didn't find anything, would you like to ask another question?")
+	mq = message_queue.MessageQueue('sender')
+	try:
+		sentences = tokenizer.tokenize(question)
+		sent_vecs = [get_sentence_vector(sent) for sent in sentences]
+		most_similar_title = get_most_similar_title(sentences, sent_vecs)
+		response = get_response_sentences(sentences, sent_vecs, most_similar_title.Link, max_sentences)
+		mq.publish(exchange="test-exchange", routing_key="from_client", body=response)
+	except:
+		mq.publish(exchange="test-exchange", routing_key="from_client", body="I'm sorry I didn't find anything, would you like to ask another question?")
 			

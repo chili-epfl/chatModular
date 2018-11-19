@@ -92,6 +92,12 @@ public class Console extends IrisModule {
 				if (key.getKeyCode() == 10) {		//10 => Enter
 					sendSpeech(textInput.getText());
 					
+					//Stop (for forum module)
+					if (textInput.getText().equals("stop")) {
+						Event newEvent = new Event("sense.user.stop");
+						send(newEvent);
+					}
+					
 					//Added: publish message (ONLY FOR FORUMMODULE)
 					try {	
 						MessageQueue mq = new MessageQueue();

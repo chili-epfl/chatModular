@@ -11,14 +11,17 @@ public class ForumModule extends IrisModule {
         if (event.triggers("monitor.system.start")) {
         	say("You can ask a question.");
         	//Event newEvent = new Event("action.waitForSpeech");
-        }else if (event.getName().equals("sense.user.type")) {
-        	if(event.has("text")) {
-        		System.out.println("You have typed something");
-        	}
         }else if (event.getName().equals("sense.user.receive")) {
         	if(event.has("text")) {
         		say("Do you have another question?");
         	}
+        }else if (event.getName().equals("sense.user.stop")) {
+        	try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+        	System.exit(0);
         }
     }
 	
