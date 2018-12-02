@@ -52,7 +52,7 @@ public class TutoringSystem {
 		system.getRecognizerModule().setPartialResults(true);
 		
 		// Add a synthesizer to the system		
-		system.setupSynthesizer(new WindowsSynthesizer(), Gender.FEMALE);
+		//system.setupSynthesizer(new WindowsSynthesizer(), Gender.FEMALE);
 		
 		// Add the flow
 		//system.addModule(new FlowModule(new TutoringFlow()));
@@ -61,7 +61,7 @@ public class TutoringSystem {
 		queue.bindQueue("test-exchange", "from_client");
 		queue.consume();
 		system.addModule(new ForumModule());
-		//system.addModule(new TutoringModule());
+		system.addModule(new TutoringModule());
 		//system.addModule(new HelloModule());
 		
 		// Load a grammar in the recognizer

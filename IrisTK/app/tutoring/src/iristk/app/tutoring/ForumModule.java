@@ -9,12 +9,11 @@ public class ForumModule extends IrisModule {
 	@Override
 	public void onEvent(Event event) {
         if (event.triggers("monitor.system.start")) {
-        	say("You can ask a question.");
-        	//Event newEvent = new Event("action.waitForSpeech");
-        }else if (event.getName().equals("sense.user.receive")) {
+        	//say("You can ask a question.");
+        /*}else if (event.getName().equals("sense.user.receive")) {
         	if(event.has("text")) {
         		say("Do you have another question?");
-        	}
+        	}*/
         }else if (event.getName().equals("sense.user.stop")) {
         	try {
 				Thread.sleep(2000);

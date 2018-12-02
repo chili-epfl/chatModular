@@ -109,7 +109,7 @@ public class Console extends IrisModule {
 					
 					//Added: print the text typed into app console
 					try {
-						//paint it green
+						//paint it blue
 						SimpleAttributeSet style = new SimpleAttributeSet();		
 						StyleConstants.setForeground(style, Color.BLUE);
 						textPane.setParagraphAttributes(style, true);
@@ -122,9 +122,6 @@ public class Console extends IrisModule {
 						newEvent.put("text", textInput.getText());
 						send(newEvent);
 						
-						//<onevent name="sense.user.speak" cond="event?:sem:number">
-						//<if cond="asInteger(event:sem:number) == number">
-						//<dialog:listen/>
 					} catch (BadLocationException e) {
 						e.printStackTrace();
 					}
@@ -180,22 +177,29 @@ public class Console extends IrisModule {
 	@Override
 	public void onEvent(final Event event) {
 		if (event.getName().equals("action.speech")) {
-			
 			EventQueue.invokeLater(new Runnable() {
 				@Override
 				public void run() {
 					try {
-						String text = getText(event);
+						 //String text = getText(event);
 						
 						//Added: publish message  (ONLY FOR TUTORINGMODULE)
-						try {				
+						//try {				
 							//MessageQueue mq = new MessageQueue();
 							//mq.publish("test-exchange", "from_server", text);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+						//} catch (Exception e) {
+							//e.printStackTrace();
+						//}
 						
+						String text;
 						textPane.setParagraphAttributes(getStyle(event.getString("agent", "system")), true);
+						if (event.has("text_answer")) {
+							text = event.getString("text_answer");
+							doc.insertString(doc.getLength(), "\n", null);
+							doc.insertString(doc.getLength(), "Tutoring module says: \n", null); 
+						} else{ 
+							text = getText(event);
+						}
 						doc.insertString(doc.getLength(), text + "\n", null);
 						textPane.setCaretPosition(doc.getLength());
 						//textInput.setEditable(true);
@@ -210,12 +214,12 @@ public class Console extends IrisModule {
 				speech.put("action", event.getId());			
 				send(speech);									
 			}*/									
-			
 		}else if(event.getName().equals("sense.user.receive")) {
 			if(event.has("text")) {
         		String text = event.getString("text");
         		try {
-					doc.insertString(doc.getLength(), "Bot says: \n", null);
+        			doc.insertString(doc.getLength(), "\n", null);
+					doc.insertString(doc.getLength(), "Forum says: \n", null);
 				} catch (BadLocationException e1) {
 					e1.printStackTrace();
 				} 
