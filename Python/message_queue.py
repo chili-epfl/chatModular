@@ -59,11 +59,14 @@ class MessageQueue(object):
 
     #find the number of sentences to put in the response (between 1 and 9)
     def find_text_and_max_sentences(self, question):
-        last_character = question[len(question) - 1]
-        question = question.strip()
-        if last_character.isdigit():
-            question = question[:-1]
-            return (question, int(last_character))
+        if len(question):
+            last_character = question[len(question) - 1]
+            question = question.strip()
+            if last_character.isdigit():
+                question = question[:-1]
+                return (question, int(last_character))
+            else:
+                return (question, max_sentences)
         else:
             return (question, max_sentences)
 
