@@ -50,9 +50,6 @@ public class Console extends IrisModule {
 	private int lastPos = 0;
 	private boolean startOfSpeech;
 	private JTextField textInput;
-	private Grammar g = new Grammar();
-	//private boolean synthesizer = true;			
-	//private boolean recognizerBo = true;	
 	private JPanel window;
 	
 	private Map<String,Color> colorMap = new HashMap<>();
@@ -231,9 +228,7 @@ public class Console extends IrisModule {
 				}
 				textPane.setCaretPosition(doc.getLength());
 			}
-		}else if (event.getName().equals("action.waitForSpeech")){
-			textInput.setEditable(true);
-		} else if (event.getName().equals("sense.speech.rec")) {
+		}else if (event.getName().equals("sense.speech.rec")) {
 		
 			EventQueue.invokeLater(new Runnable() {
 				@Override

@@ -59,6 +59,24 @@
 			</one-of>
 			<tag>out.dontknow=1</tag>	
 			</item>
+		
+			<item>
+			<one-of>
+				<item>Florida</item>
+				<item>New York</item>
+				<item>France</item>
+			</one-of>
+			<tag>out.place=1</tag>	
+			</item>
+			
+			<item>
+			<one-of>
+				<item>restaurant</item>
+				<item>hotel</item>
+				<item>holiday</item>
+			</one-of>
+			<tag>out.noun=1</tag>	
+			</item>
       </one-of>
   </rule>
   

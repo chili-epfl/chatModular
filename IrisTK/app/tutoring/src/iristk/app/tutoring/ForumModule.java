@@ -14,6 +14,11 @@ public class ForumModule extends IrisModule {
         	if(event.has("text")) {
         		say("Do you have another question?");
         	}*/
+        }else if (event.getName().equals("sense.speech.rec")) {
+            /*Check what the user says*/
+        	if(event.has("text")) {
+            sendMessage(event.getString("text"));
+                }
         }else if (event.getName().equals("sense.user.stop")) {
         	try {
 				Thread.sleep(2000);
@@ -23,6 +28,18 @@ public class ForumModule extends IrisModule {
         	System.exit(0);
         }
     }
+	
+	private void sendMessage(String message) {
+		MessageQueue mq;
+		try {
+			mq = new MessageQueue();
+			mq.publish("test-exchange", "from_server", message);
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	
 	private void say(String text) {
 		Event newEvent = new Event("action.speech");
