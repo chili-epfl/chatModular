@@ -10,9 +10,6 @@
  ******************************************************************************/
 package iristk.speech;
 
-import iristk.app.tutoring.Grammar;
-import iristk.app.tutoring.MessageQueue;
-import iristk.app.tutoring.Producer_;
 import iristk.audio.AudioPort;
 import iristk.system.Event;
 import iristk.system.InitializationException;
@@ -90,19 +87,20 @@ public class Console extends IrisModule {
 					sendSpeech(textInput.getText());
 					
 					//Stop (for forum module)
-					if (textInput.getText().equals("stop")) {
+					/*if (textInput.getText().equals("stop")) {
 						Event newEvent = new Event("sense.user.stop");
 						send(newEvent);
-					}
+					}*/
 					
 					//Added: publish message (ONLY FOR FORUMMODULE)
-					try {	
+					/*=============THIS IS THE PART TO ADD TO SEND MQ MESSAGES LIKE BEFORE ========================================*/
+					/*try {	
 						MessageQueue mq = new MessageQueue();
 						mq.publish("test-exchange", "from_server", textInput.getText());
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					}*/
 					
 					//Added: print the text typed into app console
 					try {
@@ -178,27 +176,12 @@ public class Console extends IrisModule {
 				@Override
 				public void run() {
 					try {
-						 //String text = getText(event);
-						
-						//Added: publish message  (ONLY FOR TUTORINGMODULE)
-						//try {				
-							//MessageQueue mq = new MessageQueue();
-							//mq.publish("test-exchange", "from_server", text);
-						//} catch (Exception e) {
-							//e.printStackTrace();
-						//}
-						
-						String text;
-						textPane.setParagraphAttributes(getStyle(event.getString("agent", "system")), true);
-						if (event.has("text_answer")) {
-							text = event.getString("text_answer");
-							doc.insertString(doc.getLength(), "\n", null);
-							doc.insertString(doc.getLength(), "Tutoring module says: \n", null); 
-						} else{ 
-							text = getText(event);
+						if(event.has("text")) {
+							String text = getText(event);
+							textPane.setParagraphAttributes(getStyle(event.getString("agent", "system")), true);
+							doc.insertString(doc.getLength(), text + "\n", null);
+							textPane.setCaretPosition(doc.getLength());
 						}
-						doc.insertString(doc.getLength(), text + "\n", null);
-						textPane.setCaretPosition(doc.getLength());
 						//textInput.setEditable(true);
 					} catch (BadLocationException e) {
 						e.printStackTrace();
@@ -211,23 +194,6 @@ public class Console extends IrisModule {
 				speech.put("action", event.getId());			
 				send(speech);									
 			}*/									
-		}else if(event.getName().equals("sense.user.receive")) {
-			if(event.has("text")) {
-        		String text = event.getString("text");
-        		try {
-        			doc.insertString(doc.getLength(), "\n", null);
-					doc.insertString(doc.getLength(), "Forum says: \n", null);
-				} catch (BadLocationException e1) {
-					e1.printStackTrace();
-				} 
-        		textPane.setParagraphAttributes(getStyle(event.getString("agent", "system")), true);
-				try {
-					doc.insertString(doc.getLength(), text + "\n", null);
-				} catch (BadLocationException e) {
-					e.printStackTrace();
-				}
-				textPane.setCaretPosition(doc.getLength());
-			}
 		}else if (event.getName().equals("sense.speech.rec")) {
 		
 			EventQueue.invokeLater(new Runnable() {

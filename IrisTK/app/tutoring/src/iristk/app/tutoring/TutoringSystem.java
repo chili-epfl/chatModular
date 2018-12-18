@@ -49,18 +49,19 @@ public class TutoringSystem {
 		// Add the recognizer to the system
 		system.setupRecognizer(new WindowsRecognizerFactory());
 		//system.setupConsoleRecognizer();
-		system.getRecognizerModule().setPartialResults(true);
+		//system.getRecognizerModule().setPartialResults(true);
 		
 		// Add a synthesizer to the system		
-		//system.setupSynthesizer(new WindowsSynthesizer(), Gender.FEMALE);
+		system.setupSynthesizer(new WindowsSynthesizer(), Gender.FEMALE);
 		
 		// Add the flow
-		//system.addModule(new FlowModule(new TutoringFlow()));
+		//system.addModule(new FlowModule(new TutosringFlow()));
 		MessageQueue queue = new MessageQueue();
 		system.addModule(queue);
 		queue.bindQueue("test-exchange", "from_client");
 		queue.consume();
-		system.addModule(new ForumModule());
+		system.addModule(new InitializationModule());
+		//system.addModule(new ForumModule());
 		system.addModule(new TutoringModule());
 		//system.addModule(new HelloModule());
 		
