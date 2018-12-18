@@ -38,15 +38,35 @@ class MessageQueue(object):
         self.channel.queue_bind(exchange=exchange, queue=queue_name, routing_key=routing_key)
         
         def callback(ch, method, properties, body):
+            mq = MessageQueue('sender')
             if type(body) == bytes:
                 body = body.decode("utf-8")
+            print("======================================================")
             print("Received %r" %body)
 
-            if body == 'stop':
-                self.stop()
+            body = body.split('=====')
+            if (len(body) != 2):
+                mq.publish(exchange="test-exchange", routing_key="from_client", body="I'm sorry I didn't find anything, would you like to ask another question?")
             else:
-                #my_chat_answers.chatbot_answer(body, 1)							#change here
-                my_chat_answers.chatbot_answer(self.find_text_and_max_sentences(body)[0], self.find_text_and_max_sentences(body)[1])
+                question = body[0]
+                tuto_response = body[1]
+
+                print("QUESTION: ", question)
+                print("TUTO RESPONSE: ", tuto_response)
+                if not question or not tuto_response:
+                    #question or tuto_response is empty
+                    mq.publish(exchange="test-exchange", routing_key="from_client", body="I'm sorry I didn't find anything, would you like to ask another question?")
+                else:
+                    #what to do when receives something from IrisTK
+                    if question == 'stop':
+                        print("STOP")
+                        mq.publish(exchange="test-exchange", routing_key="from_client", body='stop') #send back to stop
+                        self.stop()
+                    else:
+                        #my_chat_answers.chatbot_answer(body, 1)							#change here
+                        forum_response = my_chat_answers.chatbot_answer(self.find_text_and_max_sentences(question)[0], self.find_text_and_max_sentences(question)[1]) #find forum response
+                        answer = my_chat_answers.find_answer(question, forum_response, tuto_response) #find the best answer between forum and tuto response
+                        mq.publish(exchange="test-exchange", routing_key="from_client", body=answer) #send back the response
         
         self.channel.basic_consume(callback, queue=queue_name, no_ack=True)
         print('Waiting for messages. To exit press CTRL+C')
@@ -69,4 +89,6 @@ class MessageQueue(object):
                 return (question, max_sentences)
         else:
             return (question, max_sentences)
+        
+    
 
