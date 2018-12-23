@@ -4,7 +4,7 @@ import iristk.system.Event;
 import iristk.system.InitializationException;
 import iristk.system.IrisModule;
 
-public class InitializationModule extends IrisModule {
+public class MainModule extends IrisModule {
 	/*Starts, stops and compares which is the better answer*/
 	/*BE CAREFUL WITH SYNCHRONIZATION OF EVENTS*/
 	/*TODO when typed ten where is it supposed to stop*/

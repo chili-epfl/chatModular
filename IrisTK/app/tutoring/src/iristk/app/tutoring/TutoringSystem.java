@@ -14,7 +14,6 @@ import iristk.speech.SpeechGrammarContext;
 import iristk.speech.Voice.Gender;
 import iristk.speech.windows.WindowsRecognizerFactory;
 import iristk.speech.windows.WindowsSynthesizer;
-import iristk.system.IrisUtils;
 import iristk.system.SimpleDialogSystem;
 import iristk.util.Language;
 
@@ -60,7 +59,7 @@ public class TutoringSystem {
 		system.addModule(queue);
 		queue.bindQueue("test-exchange", "from_client");
 		queue.consume();
-		system.addModule(new InitializationModule());
+		system.addModule(new MainModule());
 		//system.addModule(new ForumModule());
 		system.addModule(new TutoringModule());
 		//system.addModule(new HelloModule());
