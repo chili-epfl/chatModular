@@ -97,8 +97,8 @@ def compute_separate_similarity_no_question(row, sent_vecs):
 
 """
 	Finds the most similar thread in a forum.
-    Returns the row of the pandas.DataFrame of this most similar thread.
-    :param sentences: list
+	Returns the row of the pandas.DataFrame of this most similar thread.
+	:param sentences: list
 	:param sent_vecs: list
 	:return: pandas.DataFrame
 	"""
@@ -115,9 +115,9 @@ def get_most_similar_title(sentences, sent_vecs):
 
 """
 	Finds the closest sentence on a particular thread.
-    Returns a pair composing of the best sentence and a number of sentences determined by max_sentences.
+	Returns a pair composing of the best sentence and a number of sentences determined by max_sentences.
 	:param sent_vecs: list
-    :param link: string
+	:param link: string
 	:param max_sentences: int
 	:return: (string, string)
 	"""
@@ -146,7 +146,7 @@ def get_response_sentences(sent_vecs, link, max_sentences):
 
 """
 	Finds the closest response in the forum using forum data and word2vec.
-    Returns a pair composed of the best sentence and a number of sentences determined by max_sentences.
+	Returns a pair composed of the best sentence and a number of sentences determined by max_sentences.
 	:param question: string
 	:param max_sentences: int
 	:return: (string, string)
