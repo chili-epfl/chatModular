@@ -1,8 +1,5 @@
-#!/usr/bin/env python
-
 import pika
 import yaml
-import numpy as np
 import chat_answers
 max_sentences = 2
 
@@ -49,6 +46,10 @@ class MessageQueue(object):
 		self.channel.stop_consuming()
 		self.connection.close()
 
+	"""
+	Finds and sends back the appropriate response depending on the question asked and the different responses.
+	:param body: string
+	"""
 	def send_back_response(self, body):
 		mq = MessageQueue('sender')
 		body = body.split('=====')
@@ -58,19 +59,25 @@ class MessageQueue(object):
 			answers = body
 			
 			if question == 'stop':
-				mq.publish(exchange="test-exchange", routing_key="from_client", body='stop') #send back to stop
+				mq.publish(exchange="test-exchange", routing_key="from_client", body='stop')
 				self.stop()
 			else:
-				#this is because the forum give back a pair (best_sentence, sentences) / is useless if we don't use forum
+				#Creating a pair (answer, answer) is done only to be more precise when comparing the question with the forum response
+				#(because the forum gives back a pair (best_sentence, sentences)). It is useless to do the next 3 lines if we don't do forum comparison.
 				answers = [(answer, answer) for answer in answers]
-				forum_response = chat_answers.chatbot_answer(self.find_text_and_max_sentences(question)[0], self.find_text_and_max_sentences(question)[1]) #find forum response
+				forum_response = chat_answers.chatbot_answer(self.parse_question(question)[0], self.parse_question(question)[1])
 				answers.append(forum_response)
+				
 				answer = chat_answers.find_answer(question, answers)
-				mq.publish(exchange="test-exchange", routing_key="from_client", body=answer) #send back the response
+				mq.publish(exchange="test-exchange", routing_key="from_client", body=answer)
 		else: mq.publish(exchange="test-exchange", routing_key="from_client", body="Try sending at least one question and one answer and check that they're not null")
 
-	#find the number of sentences to put in the response (between 1 and 9)
-	def find_text_and_max_sentences(self, question):
+	"""
+	Parses the question received into a cleansed question and the number of max sentences to put in the response (between 1 and 9).
+	:param question: string
+	:return: (string, int)
+	"""
+	def parse_question(self, question):
 		if len(question):
 			last_character = question[len(question) - 1]
 			question = question.strip()
