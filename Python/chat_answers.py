@@ -98,10 +98,10 @@ def compute_separate_similarity_no_question(row, sent_vecs):
 def get_most_similar_title(sentences, sent_vecs):
 	"""
 	Finds the most similar thread in a forum (the thread which will be the most likely to have a matching response).
-	Returns the row of the pandas.DataFrame of this most similar thread.
+	Returns the row of the DataFrame of this most similar thread.
 	:param sentences: list
 	:param sent_vecs: list
-	:return: pandas.DataFrame
+	:return: DataFrame
 	"""
 	if sentences == 0:
 		raise ValueError('Write something!')
@@ -115,7 +115,7 @@ def get_most_similar_title(sentences, sent_vecs):
 
 def get_response_sentences(sent_vecs, link, max_sentences):
 	"""
-	Finds the closest sentence on a particular thread.
+	Finds the closest sentence in a particular thread.
 	Returns a pair composed of the best sentence and a number of sentences determined by max_sentences.
 	:param sent_vecs: list
 	:param link: string
@@ -167,7 +167,7 @@ def get_most_similar_answer(sentences, sent_vecs, df):
 	Returns the closest sentence of the answer.
 	:param sentences: list
 	:param sent_vecs: list
-	:param df: pandas.DataFrame
+	:param df: DataFrame
 	:return: string
 	"""
 	if sentences == 0:
