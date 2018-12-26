@@ -95,14 +95,14 @@ def compute_separate_similarity_no_question(row, sent_vecs):
 	fp_sim = text_to_text_similarity(sent_vecs, row['First_Post_word2vec'])
 	return fp_sim
 
+def get_most_similar_title(sentences, sent_vecs):
 	"""
-	Finds the most similar thread in a forum.
+	Finds the most similar thread in a forum (the thread which will be the most likely to have a matching response).
 	Returns the row of the pandas.DataFrame of this most similar thread.
 	:param sentences: list
 	:param sent_vecs: list
 	:return: pandas.DataFrame
 	"""
-def get_most_similar_title(sentences, sent_vecs):
 	if sentences == 0:
 		raise ValueError('Write something!')
 	elif len(sentences) == 1:
@@ -113,15 +113,15 @@ def get_most_similar_title(sentences, sent_vecs):
 		title_fp_sim = tfp_df.apply(lambda row: compute_separate_similarity_no_question(row, sent_vecs), axis=1)
 	return tfp_df.loc[title_fp_sim.idxmax()]
 
+def get_response_sentences(sent_vecs, link, max_sentences):
 	"""
 	Finds the closest sentence on a particular thread.
-	Returns a pair composing of the best sentence and a number of sentences determined by max_sentences.
+	Returns a pair composed of the best sentence and a number of sentences determined by max_sentences.
 	:param sent_vecs: list
 	:param link: string
 	:param max_sentences: int
 	:return: (string, string)
 	"""
-def get_response_sentences(sent_vecs, link, max_sentences):
 	answer_df = pd.read_pickle('files/HolidayTruth/msg_df_ht_clean.pkl')
 	answer_df = answer_df[answer_df['Link'].map(lambda x: x == link)]
 	if answer_df.empty:
@@ -144,6 +144,7 @@ def get_response_sentences(sent_vecs, link, max_sentences):
 		return (best_reply, ' '.join(reply_sentences[max(0, lower_bound - max(0, upper_bound - sent_count)): 
 										min(upper_bound + max(0, 0 - lower_bound) + ((max_sentences - 1) % 2), sent_count)]))
 
+def chatbot_answer(question, max_sentences=1):
 	"""
 	Finds the closest response in the forum using forum data and word2vec.
 	Returns a pair composed of the best sentence and a number of sentences determined by max_sentences.
@@ -151,7 +152,6 @@ def get_response_sentences(sent_vecs, link, max_sentences):
 	:param max_sentences: int
 	:return: (string, string)
 	"""
-def chatbot_answer(question, max_sentences=1):
 	try:
 		sentences = tokenizer.tokenize(question)
 		sent_vecs = [get_sentence_vector(sent) for sent in sentences]
@@ -161,6 +161,7 @@ def chatbot_answer(question, max_sentences=1):
 	except:
 		return ("I'm sorry I didn't find anything", "I'm sorry I didn't find anything, would you like to ask another question?")
 
+def get_most_similar_answer(sentences, sent_vecs, df):
 	"""
 	Computes the similarity between every answer and the first sentence of the question (already enough information in the first sentence to distinguish the answers). 
 	Returns the closest sentence of the answer.
@@ -169,20 +170,19 @@ def chatbot_answer(question, max_sentences=1):
 	:param df: pandas.DataFrame
 	:return: string
 	"""
-def get_most_similar_answer(sentences, sent_vecs, df):
 	if sentences == 0:
 		raise ValueError('Write something!')
 	else:
 		title_fp_sim = df.apply(lambda row: compute_similarity(row, sent_vecs[0]), axis=1)
 	return df.loc[title_fp_sim.idxmax()].Answer[0]
 
+def find_answer(question, answers):
 	"""
 	Tries to find the closest answer to the question using word2vec.
 	:param question: string
 	:param answers: list
 	:return: string
 	"""
-def find_answer(question, answers):
 	try:
 		answers_df = pd.DataFrame([[tokenizer.tokenize(item[0])] for item in answers], columns=['Answer'])
 		answers_df['Title_word2vec'] = answers_df.Answer.apply(lambda sents: [get_sentence_vector(sent) for sent in sents])

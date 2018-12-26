@@ -46,11 +46,11 @@ class MessageQueue(object):
 		self.channel.stop_consuming()
 		self.connection.close()
 
-	"""
-	Finds and sends back the appropriate response depending on the question asked and the different responses.
-	:param body: string
-	"""
 	def send_back_response(self, body):
+		"""
+		Finds and sends back the appropriate response depending on the question asked and the different responses.
+		:param body: string
+		"""
 		mq = MessageQueue('sender')
 		body = body.split('=====')
 		#Check that has received at least one question and one response and that they're not null
@@ -72,12 +72,12 @@ class MessageQueue(object):
 				mq.publish(exchange="test-exchange", routing_key="from_client", body=answer)
 		else: mq.publish(exchange="test-exchange", routing_key="from_client", body="Try sending at least one question and one answer and check that they're not null")
 
-	"""
-	Parses the question received into a cleansed question and the number of max sentences to put in the response (between 1 and 9).
-	:param question: string
-	:return: (string, int)
-	"""
 	def parse_question(self, question):
+		"""
+		Parses the question received into a cleansed question and the number of max sentences to put in the response (between 1 and 9).
+		:param question: string
+		:return: (string, int)
+		"""
 		if len(question):
 			last_character = question[len(question) - 1]
 			question = question.strip()
