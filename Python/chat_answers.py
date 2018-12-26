@@ -95,7 +95,7 @@ def compute_separate_similarity_no_question(row, sent_vecs):
 	fp_sim = text_to_text_similarity(sent_vecs, row['First_Post_word2vec'])
 	return fp_sim
 
-    """
+	"""
 	Finds the most similar thread in a forum.
 	Returns the row of the pandas.DataFrame of this most similar thread.
 	:param sentences: list
@@ -113,7 +113,7 @@ def get_most_similar_title(sentences, sent_vecs):
 		title_fp_sim = tfp_df.apply(lambda row: compute_separate_similarity_no_question(row, sent_vecs), axis=1)
 	return tfp_df.loc[title_fp_sim.idxmax()]
 
-    """
+	"""
 	Finds the closest sentence on a particular thread.
 	Returns a pair composing of the best sentence and a number of sentences determined by max_sentences.
 	:param sent_vecs: list
@@ -144,7 +144,7 @@ def get_response_sentences(sent_vecs, link, max_sentences):
 		return (best_reply, ' '.join(reply_sentences[max(0, lower_bound - max(0, upper_bound - sent_count)): 
 										min(upper_bound + max(0, 0 - lower_bound) + ((max_sentences - 1) % 2), sent_count)]))
 
-    """
+	"""
 	Finds the closest response in the forum using forum data and word2vec.
 	Returns a pair composed of the best sentence and a number of sentences determined by max_sentences.
 	:param question: string
@@ -161,7 +161,7 @@ def chatbot_answer(question, max_sentences=1):
 	except:
 		return ("I'm sorry I didn't find anything", "I'm sorry I didn't find anything, would you like to ask another question?")
 
-    """
+	"""
 	Computes the similarity between every answer and the first sentence of the question (already enough information in the first sentence to distinguish the answers). 
 	Returns the closest sentence of the answer.
 	:param sentences: list
@@ -176,7 +176,7 @@ def get_most_similar_answer(sentences, sent_vecs, df):
 		title_fp_sim = df.apply(lambda row: compute_similarity(row, sent_vecs[0]), axis=1)
 	return df.loc[title_fp_sim.idxmax()].Answer[0]
 
-    """
+	"""
 	Tries to find the closest answer to the question using word2vec.
 	:param question: string
 	:param answers: list
