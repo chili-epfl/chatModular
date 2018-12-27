@@ -17,60 +17,56 @@ import iristk.speech.windows.WindowsSynthesizer;
 import iristk.system.SimpleDialogSystem;
 import iristk.util.Language;
 
-import java.io.File;
-import java.io.IOException;
-
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.DefaultConsumer;
-import com.rabbitmq.client.Envelope;
-
 import iristk.cfg.SRGSGrammar;
 import iristk.flow.FlowModule;
 
-public class TutoringSystem {
+/**
+ * Creates the system to launch the chatbot
+ */
+public class ChatbotSystem {
 
-	public TutoringSystem() throws Exception {
+	public ChatbotSystem() throws Exception {
 		// Create the system
 		SimpleDialogSystem system = new SimpleDialogSystem(this.getClass());
-		
+
 		// Set the language of the system
 		system.setLanguage(Language.ENGLISH_US);
-		
+
 		// Set up the GUI
 		system.setupGUI();
-		
+
 		// Add the recognizer to the system
 		system.setupRecognizer(new WindowsRecognizerFactory());
-		//system.setupConsoleRecognizer();
-		//system.getRecognizerModule().setPartialResults(true);
-		
-		// Add a synthesizer to the system		
+
+		// Add a synthesizer to the system
 		system.setupSynthesizer(new WindowsSynthesizer(), Gender.FEMALE);
+
 		
 		// Add the flow
+		//system.addModule(new FlowModule(new TutoringFlow()));
+				
+		// Add the modules
 		MessageQueue queue = new MessageQueue();
 		system.addModule(queue);
 		queue.bindQueue("test-exchange", "from_client");
 		queue.consume();
+
 		system.addModule(new MainModule());
 		system.addModule(new TutoringModule());
-		
+
 		// Load a grammar in the recognizer
-		system.loadContext("default", new SpeechGrammarContext(new SRGSGrammar(system.getPackageFile("TutoringGrammar.xml"))));
-		
+		system.loadContext("default",
+				new SpeechGrammarContext(new SRGSGrammar(system.getPackageFile("TutoringGrammar.xml"))));
+
 		// Start the interaction
 		system.sendStartSignal();
-		
+
 	}
 
 	public static void main(String[] args) throws Exception {
-		
-		new TutoringSystem();
-		
-	}
 
+		new ChatbotSystem();
+
+	}
 
 }

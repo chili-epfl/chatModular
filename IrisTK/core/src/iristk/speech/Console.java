@@ -37,6 +37,9 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+/**
+ * Manages the console which displays the chatbot
+ */
 public class Console extends IrisModule {
 
 	private JTextPane textPane;
@@ -48,12 +51,12 @@ public class Console extends IrisModule {
 	private boolean startOfSpeech;
 	private JTextField textInput;
 	private JPanel window;
-	
-	private Map<String,Color> colorMap = new HashMap<>();
+
+	private Map<String, Color> colorMap = new HashMap<>();
 	private ArrayList<Color> colorList = new ArrayList<>();
-	
+
 	private ConsoleRecognizer recognizer;
-	
+
 	{
 		colorList.add(Color.CYAN);
 		colorList.add(Color.MAGENTA);
@@ -62,8 +65,7 @@ public class Console extends IrisModule {
 		colorList.add(Color.BLUE);
 		colorList.add(Color.GREEN);
 	}
-	
-	
+
 	public Console(IrisGUI gui) {
 		window = new JPanel(new BorderLayout());
 		textPane = new JTextPane();
@@ -71,58 +73,41 @@ public class Console extends IrisModule {
 		doc = textPane.getStyledDocument();
 
 		window.add(new JScrollPane(textPane));
-		
+
 		textInput = new JTextField();
-		textInput.setEditable(true);			//was false
+		textInput.setEditable(true);
 		textInput.addKeyListener(new KeyListener() {
 			@Override
-			public void keyTyped(KeyEvent key) {	
+			public void keyTyped(KeyEvent key) {
 			}
+
 			@Override
 			public void keyReleased(KeyEvent key) {
 			}
+
 			@Override
 			public void keyPressed(KeyEvent key) {
-				if (key.getKeyCode() == 10) {		//10 => Enter
+				if (key.getKeyCode() == 10) {
 					sendSpeech(textInput.getText());
-					
-					//Stop (for forum module)
-					/*if (textInput.getText().equals("stop")) {
-						Event newEvent = new Event("sense.user.stop");
-						send(newEvent);
-					}*/
-					
-					//Added: publish message (ONLY FOR FORUMMODULE)
-					/*=============THIS IS THE PART TO ADD TO SEND MQ MESSAGES LIKE BEFORE ========================================*/
-					/*try {	
-						MessageQueue mq = new MessageQueue();
-						mq.publish("test-exchange", "from_server", textInput.getText());
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}*/
-					
-					//Added: print the text typed into app console
+
+					/* Displays the text typed into the console */
 					try {
-						//paint it blue
-						SimpleAttributeSet style = new SimpleAttributeSet();		
+						SimpleAttributeSet style = new SimpleAttributeSet();
 						StyleConstants.setForeground(style, Color.BLUE);
 						textPane.setParagraphAttributes(style, true);
-						
-						//insert on console
-						doc.insertString(doc.getLength(), textInput.getText() + "\n", null); 
-						
-						//Creating a new event
+
+						doc.insertString(doc.getLength(), textInput.getText() + "\n", null);
+
+						 /* Sends the event that the user typed a question, containing the text he typed */
 						Event newEvent = new Event("sense.user.type");
 						newEvent.put("text", textInput.getText());
 						send(newEvent);
-						
+
 					} catch (BadLocationException e) {
 						e.printStackTrace();
 					}
 					textPane.setCaretPosition(doc.getLength());
-					
-					
+
 					textInput.setText("");
 					textInput.setEditable(true);
 				} else if (!startOfSpeech) {
@@ -130,42 +115,36 @@ public class Console extends IrisModule {
 				}
 			}
 		});
-		
+
 		window.add(textInput, BorderLayout.PAGE_END);
-		
+
 		gui.addDockPanel("console", "Console", window, true);
 	}
-	
-	
-	/*
-	public void useSynthesizer(boolean cond) {
-		this.synthesizer = cond;
-	}
 
-	public void useRecognizer(boolean cond) {
-		this.recognizerBo = cond;
-	}
-	*/
-	
-	
+	/*
+	 * public void useSynthesizer(boolean cond) { this.synthesizer = cond; }
+	 * 
+	 * public void useRecognizer(boolean cond) { this.recognizerBo = cond; }
+	 */
+
 	@Override
 	public void init() throws InitializationException {
 	}
 
 	private void startOfSpeech() {
-		((ConsoleRecognizer)getRecognizer()).getListeners().startOfSpeech(0);
+		((ConsoleRecognizer) getRecognizer()).getListeners().startOfSpeech(0);
 		startOfSpeech = true;
 	}
 
 	private void sendSpeech(String text) {
 		if (text.length() > 0) {
-			((ConsoleRecognizer)getRecognizer()).getListeners().endOfSpeech(3);
+			((ConsoleRecognizer) getRecognizer()).getListeners().endOfSpeech(3);
 			RecResult result = new RecResult(RecResult.FINAL);
 			result.put("text", text);
-			((ConsoleRecognizer)getRecognizer()).getListeners().recognitionResult(result);
+			((ConsoleRecognizer) getRecognizer()).getListeners().recognitionResult(result);
 		} else {
 			RecResult result = new RecResult(RecResult.SILENCE);
-			((ConsoleRecognizer)getRecognizer()).getListeners().recognitionResult(result);
+			((ConsoleRecognizer) getRecognizer()).getListeners().recognitionResult(result);
 		}
 	}
 
@@ -176,26 +155,26 @@ public class Console extends IrisModule {
 				@Override
 				public void run() {
 					try {
-						if(event.has("text")) {
+						/* Displays the text that the user spoke into the console */
+						if (event.has("text")) {
 							String text = getText(event);
 							textPane.setParagraphAttributes(getStyle(event.getString("agent", "system")), true);
 							doc.insertString(doc.getLength(), text + "\n", null);
 							textPane.setCaretPosition(doc.getLength());
 						}
-						//textInput.setEditable(true);
+						// textInput.setEditable(true);
 					} catch (BadLocationException e) {
 						e.printStackTrace();
 					}
 				}
 			});
 
-			/*if (!synthesizer) {									
-			Event speech = new Event("monitor.speech.end");		
-				speech.put("action", event.getId());			
-				send(speech);									
-			}*/									
-		}else if (event.getName().equals("sense.speech.rec")) {
-		
+			/*
+			 * if (!synthesizer) { Event speech = new Event("monitor.speech.end");
+			 * speech.put("action", event.getId()); send(speech); }
+			 */
+		} else if (event.getName().equals("sense.speech.rec")) {
+
 			EventQueue.invokeLater(new Runnable() {
 				@Override
 				public void run() {
@@ -211,15 +190,16 @@ public class Console extends IrisModule {
 				}
 			});
 		} else if (event.getName().equals("action.listen")) {
+			/* Listens to the user speak */
 			if (recognizer != null) {
 				textInput.setEditable(true);
 				actionId = event.getId();
 				timeout = event.getInteger("timeout");
 				startOfSpeech = false;
 			}
-		} 
+		}
 	}
-	
+
 	private String getText(Event event) {
 		if (event.has("display")) {
 			return event.getString("display");
@@ -237,11 +217,11 @@ public class Console extends IrisModule {
 	protected synchronized void addPartialSpeechRecResult(Event event) {
 		try {
 			String action = event.getString("action") + event.getString("sensor");
-			if (action.equals(lastAction)) 
+			if (action.equals(lastAction))
 				doc.remove(lastPos, doc.getLength() - lastPos);
 			lastPos = doc.getLength();
 			lastAction = action;
-			String text = getText(event);						
+			String text = getText(event);
 			textPane.setParagraphAttributes(getStyle(event.getString("sensor", "user")), true);
 			doc.insertString(doc.getLength(), text + "\n", null);
 			textPane.setCaretPosition(doc.getLength());
@@ -253,12 +233,12 @@ public class Console extends IrisModule {
 	protected synchronized void addSpeechRecResult(Event event) {
 		try {
 			String action = event.getString("action") + event.getString("sensor");
-			if (action.equals(lastAction)) 
+			if (action.equals(lastAction))
 				doc.remove(lastPos, doc.getLength() - lastPos);
 			lastPos = doc.getLength();
 			lastAction = action;
-			String text = getText(event);	//This is the text spoken by the user
-			textPane.setParagraphAttributes(getStyle(event.getString("sensor", "user")), true);	//become green
+			String text = getText(event); // This is the text spoken by the user
+			textPane.setParagraphAttributes(getStyle(event.getString("sensor", "user")), true); // become green
 			doc.insertString(doc.getLength(), text + "\n", null);
 			textPane.setCaretPosition(doc.getLength());
 		} catch (BadLocationException e) {
@@ -276,10 +256,10 @@ public class Console extends IrisModule {
 		StyleConstants.setForeground(style, color);
 		return style;
 	}
-	
+
 	private Color getColor(String key) {
 		if (!colorMap.containsKey(key)) {
-			Color color = colorList.get(colorList.size()-1);
+			Color color = colorList.get(colorList.size() - 1);
 			colorMap.put(key, color);
 		}
 		Color color = colorMap.get(key);
@@ -287,21 +267,21 @@ public class Console extends IrisModule {
 		colorList.add(0, color);
 		return color;
 	}
-	
+
 	public Recognizer getRecognizer() {
 		if (recognizer == null)
 			recognizer = new ConsoleRecognizer();
 		return recognizer;
 	}
-	
+
 	private static class ConsoleRecognizer implements Recognizer {
-		
+
 		private RecognizerListeners listeners = new RecognizerListeners();
-		
+
 		public RecognizerListeners getListeners() {
 			return listeners;
 		}
-		
+
 		@Override
 		public void startListen() throws RecognizerException {
 		}
@@ -364,6 +344,5 @@ public class Console extends IrisModule {
 			return null;
 		}
 	}
-	
-	
+
 }

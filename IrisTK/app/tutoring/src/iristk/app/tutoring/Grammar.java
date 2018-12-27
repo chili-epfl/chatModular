@@ -1,40 +1,60 @@
 package iristk.app.tutoring;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
+/**
+ * Creates a grammar for the Tutoring example
+ */
 public class Grammar {
-	
+
 	private Map<String, Integer> numbers = new HashMap<>();
 	private String[] randomSentences;
-	
+
 	public Grammar() {
 		createGrammar();
 		createRandomSentences();
 	}
-	
+
+	/**
+	 * Converts the number typed in whole letters in string to integer and returns
+	 * it
+	 * 
+	 * @param key: string to convert if possible
+	 * @return number in integer or null if doesn't find a number
+	 */
 	public Integer getGrammar(String key) {
 		if (numbers.keySet().contains(key))
 			return numbers.get(key);
 		else
 			return null;
 	}
-	
+
+	/**
+	 * Gives back a random response from an array of possible answers
+	 * 
+	 * @return random response
+	 */
 	public String getRandomResponse() {
 		int r = new Random().nextInt(randomSentences.length);
 		return randomSentences[r];
 	}
-	
+
+	/**
+	 * Creates an array with multiple sentences
+	 */
 	private void createRandomSentences() {
-		String[]  sentencesArray = {"You could try counting on your fingers.",
+		String[] sentencesArray = { "You could try counting on your fingers.",
 				"Try to see this problem as if you had to sum 5 apples and 5 bananas.",
-				"Think again, I'm sure you can find it!"};
+				"Think again, I'm sure you can find it!" };
 		randomSentences = sentencesArray;
 	}
-	
+
+	/**
+	 * Creates a map associating numbers in whole letters in string to their
+	 * representation in integer
+	 */
 	private void createGrammar() {
 		numbers.put("one", 1);
 		numbers.put("two", 2);

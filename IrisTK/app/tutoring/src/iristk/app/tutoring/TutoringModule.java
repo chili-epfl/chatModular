@@ -6,86 +6,91 @@ import iristk.system.Event;
 import iristk.system.InitializationException;
 import iristk.system.IrisModule;
 
+/**
+ * Creates the TutoringModule that manages the events relative to the tutoring
+ * example
+ */
 public class TutoringModule extends IrisModule {
-	
+
 	private Integer number;
 	private Integer guesses;
 	private Grammar g = new Grammar();
 
-	
-
+	/**
+	 * Reacts a certain way according to the events we receive
+	 */
 	@Override
 	public void onEvent(Event event) {
-        if (event.triggers("monitor.system.start")) {
-        	number = 10;
-        	guesses = 0;
-        	//say_and_listen("Could you compute how much is 5 + 5", false);
-        }else if (event.getName().equals("sense.speech.rec")) { 
-        	/*Check what the user says*/
-            if(event.has("text")) {
-            	check(event.getString("text"));
-            }
-        }else if (event.getName().equals("sense.user.type")) {
-        	/*Check what the user typed*/
-        	if(event.has("text")) {
-        		check(event.getString("text"));
-        	}
-        }
-    }
-	
-	
+		if (event.triggers("monitor.system.start")) {
+			/* Initializes the number to find and the number of guesses */
+			number = 10;
+			guesses = 0;
+		} else if (event.getName().equals("sense.speech.rec") || event.getName().equals("sense.user.type")) {
+			/* Checks what the user typed or said */
+			if (event.has("text")) {
+				check(event.getString("text"));
+			}
+		}
+	}
+
+	/**
+	 * Checks what the user typed or said and finds the appropriate response.
+	 * 
+	 * @param answer: the text to be checked
+	 */
 	private void check(String answer) {
 		StringBuilder sbuf = new StringBuilder();
 		Formatter fmt = new Formatter(sbuf);
+
 		if (g.getGrammar(answer) == null) {
-			//add lower and upper cases
+			/* A sentence was typed */
 			if (answer.contains("help") || answer.contains("don't know")) {
+				/* The prefix is needed to be able to do answers comparison with word2vec */
 				String prefix = "";
-				if(answer.contains("help")) prefix = "You need some help?";
-				else if (answer.contains("don't know")) prefix = "You don't know?";
+				if (answer.contains("help"))
+					prefix = "You need some help?";
+				else if (answer.contains("don't know"))
+					prefix = "You don't know?";
 				String matching_response = g.getRandomResponse();
 				fmt.format("%s %s", prefix, matching_response);
-				//send_tuto_response(sbuf.toString());
-			} else send_tuto_response("I am sorry, I didn't get that.");
+			} else
+				send_tuto_response("I am sorry, I didn't get that.");
 		} else {
+			/* A number was typed */
 			guesses++;
-			if (g.getGrammar(answer) == number) {			//a number was typed
+			if (g.getGrammar(answer) == number) {
 				if (guesses == 1) {
 					fmt.format("%s is correct, you find it on the first try", answer);
-					//send_tuto_response(sbuf.toString());
 				} else {
 					fmt.format("%s is correct. Great! You've found it this time.", answer);
-					//send_tuto_response(sbuf.toString());
 				}
-			} else if (g.getGrammar(answer) == (number + 1) || g.getGrammar(answer) == (number - 1) ) {
+			} else if (g.getGrammar(answer) == (number + 1) || g.getGrammar(answer) == (number - 1)) {
 				fmt.format("%s is almost correct! Let's try one more time.", answer);
-				//send_tuto_response(sbuf.toString());
-			}else if(g.getGrammar(answer) > number) {
-		    	fmt.format("%s is too high, think again.", answer);
-		    	//send_tuto_response(sbuf.toString());
-		    }else {
-		    	fmt.format("%s is too low, think again.", answer);
-		    	//send_tuto_response(sbuf.toString());
-		    }
+			} else if (g.getGrammar(answer) > number) {
+				fmt.format("%s is too high, think again.", answer);
+			} else {
+				fmt.format("%s is too low, think again.", answer);
+			}
 		}
 		send_tuto_response(sbuf.toString());
 		fmt.close();
 	}
-	
-	//We can send either an answer or an information from the system
+
+	/**
+	 * Sends an event that the tutoring module response is ready, containing the
+	 * response of this module
+	 * 
+	 * @param text: the text to be put in the event
+	 */
 	private void send_tuto_response(String text) {
-		//Send an event that the forum from TutoringModule is ready to be compared
-		System.out.println("--------------------------------------------------------");
-		System.out.println("SENT: " + text);
-		Event newEvent = new Event("sense.send.tuto.response");
+		Event newEvent = new Event("sense.tuto_response_ready");
 		newEvent.put("text", text);
 		send(newEvent);
 	}
-	
 
-    @Override
-    public void init() throws InitializationException {
-        // Initialize the module
-    }
-	
+	@Override
+	public void init() throws InitializationException {
+		// Initialize the module
+	}
+
 }
