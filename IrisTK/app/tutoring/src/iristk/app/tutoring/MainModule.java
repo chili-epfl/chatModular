@@ -62,10 +62,9 @@ public class MainModule extends IrisModule {
 
 	/**
 	 * Sends a message with RabbitMQ containing the question and the tutoring
-	 * module's response => Change here if you want to compare the answers of
-	 * multiple modules mq.publish("test-exchange", "from_server", question +
-	 * "=====" + response1 + "=====" + response2 + "=====" + ... + "=====" +
-	 * responseN);
+	 * module's response
+	 * 		=> 	Change here if you want to compare the answers of multiple modules
+	 * 			mq.publish("test-exchange", "from_server", question + "=====" + response1 + "=====" + response2 + "=====" + ... + "=====" + responseN);
 	 */
 	private void send() {
 		if (tuto_synchro && question_synchro) {
@@ -92,8 +91,8 @@ public class MainModule extends IrisModule {
 		send(newEvent);
 
 		Event newListenEvent = new Event("action.listen");
-		newListenEvent.put("endSilTimeout", 500);
-		newListenEvent.put("timeout", 8000);
+		newListenEvent.put("endSilTimeout", 1000);
+		newListenEvent.put("noSpeechTimeout", 8000);
 		send(newListenEvent);
 	}
 
