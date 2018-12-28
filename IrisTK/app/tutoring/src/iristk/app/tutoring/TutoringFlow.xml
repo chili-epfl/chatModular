@@ -58,7 +58,7 @@
 					<dialog:say>Great! You've found it this time.</dialog:say>
 				</if>
 				<goto state="CheckAgain"/>
-			<elseif cond="asInteger(event:sem:number) == 9 or asInteger(event:sem:number) == 11"/>
+			<elseif cond="asInteger(event:sem:number) == (number - 1) or asInteger(event:sem:number) == (number + 1)"/>
 				<dialog:say>You're almost correct! Let's try one more time.</dialog:say>
 				<reentry/>
 			<elseif cond="asInteger(event:sem:number) &gt; number"/>	

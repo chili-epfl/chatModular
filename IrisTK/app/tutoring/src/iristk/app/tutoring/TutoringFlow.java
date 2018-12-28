@@ -1,14 +1,15 @@
 package iristk.app.tutoring;
 
+import java.util.List;
 import java.io.File;
 import iristk.xml.XmlMarshaller.XMLLocation;
 import iristk.system.Event;
 import iristk.flow.*;
+import iristk.util.Record;
 import static iristk.util.Converters.*;
+import static iristk.flow.State.*;
+import iristk.speech.Console;
 
-/**
- * Class generated automatically from TutoringFlow.xml
- */
 public class TutoringFlow extends iristk.flow.Flow {
 
 	private Integer number;
@@ -77,8 +78,8 @@ public class TutoringFlow extends iristk.flow.Flow {
 			// Line: 12
 			try {
 				EXECUTION: {
-					int count = getCount(1588970020) + 1;
-					incrCount(1588970020);
+					int count = getCount(1811075214) + 1;
+					incrCount(1811075214);
 					// Line: 13
 					number = 10;
 					// Line: 14
@@ -133,8 +134,8 @@ public class TutoringFlow extends iristk.flow.Flow {
 			// Line: 21
 			try {
 				EXECUTION: {
-					int count = getCount(183264084) + 1;
-					incrCount(183264084);
+					int count = getCount(1066376662) + 1;
+					incrCount(1066376662);
 					iristk.flow.DialogFlow.listen state3 = new iristk.flow.DialogFlow.listen();
 					if (!flowThread.callState(state3, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 21, 12)))) {
 						eventResult = EVENT_ABORTED;
@@ -152,10 +153,10 @@ public class TutoringFlow extends iristk.flow.Flow {
 			int count;
 			// Line: 25
 			try {
-				count = getCount(476402209) + 1;
+				count = getCount(183264084) + 1;
 				if (event.triggers("sense.user.type")) {
 					if (g.getGrammar((String)event.get("text")) != null) {
-						incrCount(476402209);
+						incrCount(183264084);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
 							// Line: 26
@@ -208,7 +209,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 								boolean chosen11 = false;
 								boolean matching12 = true;
 								while (!chosen11 && matching12) {
-									int rand13 = random(110718392, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
+									int rand13 = random(914424520, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
 									matching12 = false;
 									if (true) {
 										matching12 = true;
@@ -249,7 +250,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 								boolean chosen18 = false;
 								boolean matching19 = true;
 								while (!chosen18 && matching19) {
-									int rand20 = random(1100439041, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
+									int rand20 = random(2143192188, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
 									matching19 = false;
 									if (true) {
 										matching19 = true;
@@ -294,10 +295,10 @@ public class TutoringFlow extends iristk.flow.Flow {
 			}
 			// Line: 52
 			try {
-				count = getCount(231685785) + 1;
+				count = getCount(204349222) + 1;
 				if (event.triggers("sense.user.speak")) {
 					if (event.has("sem:number")) {
-						incrCount(231685785);
+						incrCount(204349222);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
 							// Line: 53
@@ -331,7 +332,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 								eventResult = EVENT_ABORTED;
 								break EXECUTION;
 								// Line: 61
-							} else if (asInteger(event.get("sem:number")) == 9 || asInteger(event.get("sem:number")) == 11) {
+							} else if (asInteger(event.get("sem:number")) == (number - 1) || asInteger(event.get("sem:number")) == (number + 1)) {
 								iristk.flow.DialogFlow.say state30 = new iristk.flow.DialogFlow.say();
 								StringCreator string31 = new StringCreator();
 								string31.append("You're almost correct! Let's try one more time.");
@@ -350,7 +351,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 								boolean chosen32 = false;
 								boolean matching33 = true;
 								while (!chosen32 && matching33) {
-									int rand34 = random(1365202186, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
+									int rand34 = random(1694819250, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
 									matching33 = false;
 									if (true) {
 										matching33 = true;
@@ -391,7 +392,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 								boolean chosen39 = false;
 								boolean matching40 = true;
 								while (!chosen39 && matching40) {
-									int rand41 = random(932583850, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
+									int rand41 = random(474675244, 2, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
 									matching40 = false;
 									if (true) {
 										matching40 = true;
@@ -461,8 +462,8 @@ public class TutoringFlow extends iristk.flow.Flow {
 			// Line: 81
 			try {
 				EXECUTION: {
-					int count = getCount(305808283) + 1;
-					incrCount(305808283);
+					int count = getCount(359023572) + 1;
+					incrCount(359023572);
 					iristk.flow.DialogFlow.say state46 = new iristk.flow.DialogFlow.say();
 					StringCreator string47 = new StringCreator();
 					string47.append("Do you want to try again?");
@@ -488,10 +489,10 @@ public class TutoringFlow extends iristk.flow.Flow {
 			int count;
 			// Line: 85
 			try {
-				count = getCount(2111991224) + 1;
+				count = getCount(305808283) + 1;
 				if (event.triggers("sense.user.type")) {
 					if (event.get("text").equals("yes")) {
-						incrCount(2111991224);
+						incrCount(305808283);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
 							iristk.flow.DialogFlow.say state49 = new iristk.flow.DialogFlow.say();
@@ -516,10 +517,10 @@ public class TutoringFlow extends iristk.flow.Flow {
 			}
 			// Line: 89
 			try {
-				count = getCount(917142466) + 1;
+				count = getCount(292938459) + 1;
 				if (event.triggers("sense.user.speak")) {
 					if (event.has("sem:yes")) {
-						incrCount(917142466);
+						incrCount(292938459);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
 							iristk.flow.DialogFlow.say state52 = new iristk.flow.DialogFlow.say();
@@ -544,10 +545,10 @@ public class TutoringFlow extends iristk.flow.Flow {
 			}
 			// Line: 93
 			try {
-				count = getCount(405662939) + 1;
+				count = getCount(1993134103) + 1;
 				if (event.triggers("sense.user.type")) {
 					if (event.get("text").equals("no")) {
-						incrCount(405662939);
+						incrCount(1993134103);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
 							iristk.flow.DialogFlow.say state55 = new iristk.flow.DialogFlow.say();
@@ -569,10 +570,10 @@ public class TutoringFlow extends iristk.flow.Flow {
 			}
 			// Line: 97
 			try {
-				count = getCount(1130478920) + 1;
+				count = getCount(653305407) + 1;
 				if (event.triggers("sense.user.speak")) {
 					if (event.has("sem:no")) {
-						incrCount(1130478920);
+						incrCount(653305407);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
 							iristk.flow.DialogFlow.say state57 = new iristk.flow.DialogFlow.say();
@@ -624,17 +625,17 @@ public class TutoringFlow extends iristk.flow.Flow {
 			int count;
 			// Line: 104
 			try {
-				count = getCount(123961122) + 1;
+				count = getCount(604107971) + 1;
 				if (event.triggers("sense.user.type")) {
 					if (event.getString("text").contains("help")) {
-						incrCount(123961122);
+						incrCount(604107971);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
 							// Line: 105
 							boolean chosen59 = false;
 							boolean matching60 = true;
 							while (!chosen59 && matching60) {
-								int rand61 = random(1227229563, 3, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
+								int rand61 = random(123961122, 3, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
 								matching60 = false;
 								if (true) {
 									matching60 = true;
@@ -692,17 +693,17 @@ public class TutoringFlow extends iristk.flow.Flow {
 			}
 			// Line: 113
 			try {
-				count = getCount(1562557367) + 1;
+				count = getCount(1982791261) + 1;
 				if (event.triggers("sense.user.speak")) {
 					if (event.has("sem:dontknow")) {
-						incrCount(1562557367);
+						incrCount(1982791261);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
 							// Line: 114
 							boolean chosen68 = false;
 							boolean matching69 = true;
 							while (!chosen68 && matching69) {
-								int rand70 = random(1101288798, 3, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
+								int rand70 = random(1562557367, 3, iristk.util.RandomList.RandomModel.DECK_RESHUFFLE_NOREPEAT);
 								matching69 = false;
 								if (true) {
 									matching69 = true;
@@ -760,9 +761,9 @@ public class TutoringFlow extends iristk.flow.Flow {
 			}
 			// Line: 122
 			try {
-				count = getCount(971848845) + 1;
+				count = getCount(942731712) + 1;
 				if (event.triggers("sense.user.type")) {
-					incrCount(971848845);
+					incrCount(942731712);
 					eventResult = EVENT_CONSUMED;
 					EXECUTION: {
 						iristk.flow.DialogFlow.say state77 = new iristk.flow.DialogFlow.say();
