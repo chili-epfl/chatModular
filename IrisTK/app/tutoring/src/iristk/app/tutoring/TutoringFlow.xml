@@ -19,7 +19,7 @@
 	
 	<state id="Guess" extends="Dialog">
 		<onentry>
-			
+			<dialog:listen/>
 		</onentry>
 		
 		<onevent name="sense.user.type" cond="g.getGrammar((String)event:text) != null">
@@ -48,6 +48,33 @@
 				<reentry/>
 			</if>
 		</onevent>
+		
+		<onevent name="sense.user.speak" cond="event?:sem:number">
+			<exec>guesses++</exec>
+			<if cond="asInteger(event:sem:number) == number">
+				<if cond="guesses == 1">
+					<dialog:say>That was correct, you find it on the first try.</dialog:say>	
+				<else/>
+					<dialog:say>Great! You've found it this time.</dialog:say>
+				</if>
+				<goto state="CheckAgain"/>
+			<elseif cond="asInteger(event:sem:number) == 9 or asInteger(event:sem:number) == 11"/>
+				<dialog:say>You're almost correct! Let's try one more time.</dialog:say>
+				<reentry/>
+			<elseif cond="asInteger(event:sem:number) &gt; number"/>	
+				<random>
+					<dialog:say>That was too high, think again.</dialog:say>
+					<dialog:say>That's still not quite it, let's think again.</dialog:say>
+				</random>
+				<reentry/>
+			<else/>
+				<random>
+					<dialog:say>That was too low, think again.</dialog:say>
+					<dialog:say>I'm sure you can find it, let's try again.</dialog:say>
+				</random>
+				<reentry/>
+			</if>
+		</onevent>
 	</state>
 	
 	<state id="CheckAgain" extends="Dialog">
@@ -59,10 +86,18 @@
 			<dialog:say>Okay, let's try again.</dialog:say>
 			<goto state="Start"/>
 		</onevent>
+		<onevent name="sense.user.speak" cond="event?:sem:yes">
+			<dialog:say>Okay, let's try again.</dialog:say>
+			<goto state="Start"/>
+		</onevent>
 		<onevent name="sense.user.type" cond="event:text.equals(no)">
 			<dialog:say>Okay, I was glad to help you.</dialog:say>
 			<exec>System.exit(0)</exec>
-		</onevent>		
+		</onevent>
+		<onevent name="sense.user.speak" cond="event?:sem:no">
+			<dialog:say>Okay, I was glad to help you.</dialog:say>
+			<exec>System.exit(0)</exec>
+		</onevent>
 	</state>
 	
 	<state id="Dialog">
@@ -70,6 +105,16 @@
 		 	<random>
             	<dialog:say>You could try counting on your fingers.</dialog:say>
             	<dialog:say>Try to see this problem as if you had to sum 5 apples and 5 bananas.</dialog:say>
+            	<dialog:say>Think again, I'm sure you can find it!</dialog:say>
+            </random>
+            <reentry/>  
+        </onevent>
+        
+         <onevent name="sense.user.speak" cond="event?:sem:dontknow">
+		 	<random>
+            	<dialog:say>You could try counting on your fingers.</dialog:say>
+            	<dialog:say>Try to see this problem as if you had to sum 5 apples and 5 bananas.</dialog:say>
+            	<dialog:say>Think again, I'm sure you can find it!</dialog:say>
             </random>
             <reentry/>  
         </onevent>
