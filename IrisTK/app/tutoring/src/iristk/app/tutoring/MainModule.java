@@ -25,7 +25,7 @@ public class MainModule extends IrisModule {
 	public void onEvent(Event event) {
 		if (event.triggers("monitor.system.start")) {
 			say_and_listen("Could you compute how much is 5 + 5");
-		} else if (event.getName().equals("action.stop")) {
+		} else if (event.getName().equals("monitor.system.stop")) {
 			say_and_listen("Bye!");
 			try {
 				Thread.sleep(2000);
@@ -52,7 +52,7 @@ public class MainModule extends IrisModule {
 			 /* Reacts to the event that we received an answer from RabbitMQ to be displayed */
 			if (event.has("text")) {
 				if (event.getString("text").equals("stop")) {
-					Event newEvent = new Event("action.stop");
+					Event newEvent = new Event("monitor.system.stop");
 					send(newEvent);
 				} else
 					say_and_listen(event.getString("text"));
