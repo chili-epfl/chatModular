@@ -82,7 +82,7 @@
 			<dialog:say>Do you want to try again?</dialog:say>
 			<dialog:listen/>
 		</onentry>
-		<onevent name="sense.user.type" cond="event:text.equals(yes)">
+		<onevent name="sense.user.type" cond="event.getString('text').equals('yes')">
 			<dialog:say>Okay, let's try again.</dialog:say>
 			<goto state="Start"/>
 		</onevent>
@@ -90,7 +90,7 @@
 			<dialog:say>Okay, let's try again.</dialog:say>
 			<goto state="Start"/>
 		</onevent>
-		<onevent name="sense.user.type" cond="event:text.equals(no)">
+		<onevent name="sense.user.type" cond="event.getString('text').equals('no')">
 			<dialog:say>Okay, I was glad to help you.</dialog:say>
 			<exec>System.exit(0)</exec>
 		</onevent>
@@ -101,7 +101,7 @@
 	</state>
 	
 	<state id="Dialog">
-		 <onevent name="sense.user.type" cond="event.getString(text).contains(help)">
+		 <onevent name="sense.user.type" cond="event.getString('text').contains('help')">
 		 	<random>
             	<dialog:say>You could try counting on your fingers.</dialog:say>
             	<dialog:say>Try to see this problem as if you had to sum 5 apples and 5 bananas.</dialog:say>
@@ -118,11 +118,18 @@
             </random>
             <reentry/>  
         </onevent>
-		
-		<onevent name="sense.user.type">
+        
+          <onevent name="sense.user.type">
 			<dialog:say>I am sorry, I didn't get that.</dialog:say>
 			<reentry/>
 		</onevent>
+        
+        <onevent name="sense.user.silence">
+			<dialog:say>I am sorry, I didn't hear anything.</dialog:say>
+			<reentry/>
+		</onevent>
+		
+		
 	</state>
 	
 

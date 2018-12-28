@@ -491,7 +491,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 			try {
 				count = getCount(305808283) + 1;
 				if (event.triggers("sense.user.type")) {
-					if (event.get("text").equals("yes")) {
+					if (event.getString("text").equals("yes")) {
 						incrCount(305808283);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
@@ -499,7 +499,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 							StringCreator string50 = new StringCreator();
 							string50.append("Okay, let's try again.");
 							state49.setText(string50.toString());
-							if (!flowThread.callState(state49, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 85, 65)))) {
+							if (!flowThread.callState(state49, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 85, 80)))) {
 								eventResult = EVENT_ABORTED;
 								break EXECUTION;
 							}
@@ -513,7 +513,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 					}
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 85, 65));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 85, 80));
 			}
 			// Line: 89
 			try {
@@ -547,7 +547,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 			try {
 				count = getCount(1993134103) + 1;
 				if (event.triggers("sense.user.type")) {
-					if (event.get("text").equals("no")) {
+					if (event.getString("text").equals("no")) {
 						incrCount(1993134103);
 						eventResult = EVENT_CONSUMED;
 						EXECUTION: {
@@ -555,7 +555,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 							StringCreator string56 = new StringCreator();
 							string56.append("Okay, I was glad to help you.");
 							state55.setText(string56.toString());
-							if (!flowThread.callState(state55, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 93, 64)))) {
+							if (!flowThread.callState(state55, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 93, 79)))) {
 								eventResult = EVENT_ABORTED;
 								break EXECUTION;
 							}
@@ -566,7 +566,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 					}
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 93, 64));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 93, 79));
 			}
 			// Line: 97
 			try {
@@ -689,7 +689,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 					}
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 104, 80));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 104, 84));
 			}
 			// Line: 113
 			try {
@@ -770,7 +770,7 @@ public class TutoringFlow extends iristk.flow.Flow {
 						StringCreator string78 = new StringCreator();
 						string78.append("I am sorry, I didn't get that.");
 						state77.setText(string78.toString());
-						if (!flowThread.callState(state77, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 122, 35)))) {
+						if (!flowThread.callState(state77, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 122, 43)))) {
 							eventResult = EVENT_ABORTED;
 							break EXECUTION;
 						}
@@ -782,7 +782,32 @@ public class TutoringFlow extends iristk.flow.Flow {
 					if (eventResult != EVENT_IGNORED) return eventResult;
 				}
 			} catch (Exception e) {
-				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 122, 35));
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 122, 43));
+			}
+			// Line: 127
+			try {
+				count = getCount(1910163204) + 1;
+				if (event.triggers("sense.user.silence")) {
+					incrCount(1910163204);
+					eventResult = EVENT_CONSUMED;
+					EXECUTION: {
+						iristk.flow.DialogFlow.say state79 = new iristk.flow.DialogFlow.say();
+						StringCreator string80 = new StringCreator();
+						string80.append("I am sorry, I didn't hear anything.");
+						state79.setText(string80.toString());
+						if (!flowThread.callState(state79, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 127, 44)))) {
+							eventResult = EVENT_ABORTED;
+							break EXECUTION;
+						}
+						// Line: 129
+						flowThread.reentryState(this, new FlowEventInfo(currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 129, 14)));
+						eventResult = EVENT_ABORTED;
+						break EXECUTION;
+					}
+					if (eventResult != EVENT_IGNORED) return eventResult;
+				}
+			} catch (Exception e) {
+				throw new FlowException(e, currentState, event, new XMLLocation(new File("C:\\Users\\Meret\\Documents\\EPFL\\3Annee\\Semestre_5\\Projet\\GitHubDepository\\chatModular\\IrisTK\\app\\tutoring\\src\\iristk\\app\\tutoring\\TutoringFlow.xml"), 127, 44));
 			}
 			eventResult = super.onFlowEvent(event);
 			if (eventResult != EVENT_IGNORED) return eventResult;
