@@ -33,7 +33,7 @@ public class MainModule extends IrisModule {
 				e.printStackTrace();
 			}
 			System.exit(0);
-		} else if (event.getName().equals("sense.tuto_response_ready")) {
+		} else if (event.getName().equals("action.tuto_response_ready")) {
 			/* Reacts to the event that the tutoring module sent a response */
 			if (event.has("text")) {
 				tutoResponse = event.getString("text");

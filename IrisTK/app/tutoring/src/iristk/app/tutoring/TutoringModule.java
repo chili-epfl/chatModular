@@ -83,7 +83,7 @@ public class TutoringModule extends IrisModule {
 	 * @param text: the text to be put in the event
 	 */
 	private void send_tuto_response(String text) {
-		Event newEvent = new Event("sense.tuto_response_ready");
+		Event newEvent = new Event("action.tuto_response_ready");
 		newEvent.put("text", text);
 		send(newEvent);
 	}
