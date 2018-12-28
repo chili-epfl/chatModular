@@ -3,7 +3,6 @@
 	initial="Start"	xmlns="iristk.flow" xmlns:p="iristk.flow.param" xmlns:dialog="iristk.flow.DialogFlow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="iristk.flow flow.xsd iristk.flow.DialogFlow DialogFlow.xsd">
 	
-	<import class="iristk.speech.Console"/>
 	<var name="number"  type="Integer"/>
 	<var name="guesses" type="Integer"/>
 	<var name="g" type="Grammar" value="new Grammar()"/>
