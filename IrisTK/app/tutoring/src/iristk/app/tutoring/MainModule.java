@@ -5,7 +5,6 @@ import iristk.system.Event;
 import iristk.system.InitializationException;
 import iristk.system.IrisModule;
 
-/*SAY AND LISTEN AND COMMENTARY OF SEND*/
 /**
  * Creates the MainModule that manages the events relative to the initialization
  * and stop of the system and the comparison and search of the best answer to
