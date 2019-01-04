@@ -159,7 +159,7 @@ public class Console extends IrisModule {
 						if (event.has("text")) {
 							String text = getText(event);
 							textPane.setParagraphAttributes(getStyle(event.getString("agent", "system")), true);
-							doc.insertString(doc.getLength(), text + "\n", null);
+							doc.insertString(doc.getLength(), text + "\n\n", null);
 							textPane.setCaretPosition(doc.getLength());
 						}
 						// textInput.setEditable(true);
