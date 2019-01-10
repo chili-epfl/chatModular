@@ -6,6 +6,7 @@ max_sentences = 2
 class MessageQueue(object):
 	def __init__(self, name):
 		self.name = name
+		#Change the parameters of the file to be able to connect to RabbitMQ
 		self.settings = yaml.safe_load(open('settings.yaml', 'r').read())
 		
 		ip = self.settings['ip']

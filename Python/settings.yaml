@@ -1,5 +1,5 @@
-ip: "192.168.0.19"
+ip: ""
 port: 5672
-username: "meretm"
-pwd: "o8!jk6f."
-vhost: "test"
+username: ""
+pwd: ""
+vhost: ""
