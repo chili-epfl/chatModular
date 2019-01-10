@@ -51,6 +51,7 @@ public class Console extends IrisModule {
 	private boolean startOfSpeech;
 	private JTextField textInput;
 	private JPanel window;
+	private int height = 14;
 
 	private Map<String, Color> colorMap = new HashMap<>();
 	private ArrayList<Color> colorList = new ArrayList<>();
@@ -88,17 +89,19 @@ public class Console extends IrisModule {
 			@Override
 			public void keyPressed(KeyEvent key) {
 				if (key.getKeyCode() == 10) {
-					sendSpeech(textInput.getText());
 
 					/* Displays the text typed into the console */
 					try {
 						SimpleAttributeSet style = new SimpleAttributeSet();
 						StyleConstants.setForeground(style, Color.BLUE);
+						StyleConstants.setFontSize(style, height);
 						textPane.setParagraphAttributes(style, true);
 
 						doc.insertString(doc.getLength(), textInput.getText() + "\n", null);
 
-						 /* Sends the event that the user typed a question, containing the text he typed */
+						/*
+						 * Sends the event that the user typed a question, containing the text he typed
+						 */
 						Event newEvent = new Event("sense.user.type");
 						newEvent.put("text", textInput.getText());
 						send(newEvent);
@@ -107,7 +110,8 @@ public class Console extends IrisModule {
 						e.printStackTrace();
 					}
 					textPane.setCaretPosition(doc.getLength());
-
+					
+					sendSpeech(textInput.getText());
 					textInput.setText("");
 					textInput.setEditable(true);
 				} else if (!startOfSpeech) {
@@ -135,16 +139,16 @@ public class Console extends IrisModule {
 		((ConsoleRecognizer) getRecognizer()).getListeners().startOfSpeech(0);
 		startOfSpeech = true;
 	}
-
+	
 	private void sendSpeech(String text) {
 		if (text.length() > 0) {
-			((ConsoleRecognizer) getRecognizer()).getListeners().endOfSpeech(3);
+			((ConsoleRecognizer)getRecognizer()).getListeners().endOfSpeech(3);
 			RecResult result = new RecResult(RecResult.FINAL);
 			result.put("text", text);
-			((ConsoleRecognizer) getRecognizer()).getListeners().recognitionResult(result);
+			((ConsoleRecognizer)getRecognizer()).getListeners().recognitionResult(result);
 		} else {
 			RecResult result = new RecResult(RecResult.SILENCE);
-			((ConsoleRecognizer) getRecognizer()).getListeners().recognitionResult(result);
+			((ConsoleRecognizer)getRecognizer()).getListeners().recognitionResult(result);
 		}
 	}
 
@@ -155,7 +159,7 @@ public class Console extends IrisModule {
 				@Override
 				public void run() {
 					try {
-						/* Displays the text that the user spoke into the console */
+						/* Displays the response of the user request */
 						if (event.has("text")) {
 							String text = getText(event);
 							textPane.setParagraphAttributes(getStyle(event.getString("agent", "system")), true);
@@ -254,6 +258,7 @@ public class Console extends IrisModule {
 		else
 			color = getColor(key);
 		StyleConstants.setForeground(style, color);
+		StyleConstants.setFontSize(style, height);
 		return style;
 	}
 
